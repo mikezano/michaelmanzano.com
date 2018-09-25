@@ -1,5 +1,8 @@
 <template lang="pug">
-	svg(height='800' width='800')
+div
+	button(@click="stop()") Stop
+	button(@click="start()") Start
+	svg(height='800' width='800' style="display:block;")
 		defs
 			SVGRadialGradient(:id="'violet'",	:colorFrom="'#9400D3'" :colorTo="'#7200a3'")
 			SVGRadialGradient(:id="'indigo'",	:colorFrom="'#4B0082'" :colorTo="'#410070'")
@@ -28,7 +31,7 @@ import CircleSVG from '@/views/CircleSVG.vue';
 import SVGRadialGradient from '@/views/SVGRadialGradient.vue';
 import SVGDropShadow from '@/views/SVGDropShadow.vue';
 import ISVGCircle from '@/models/ISVGCircle';
-import { setInterval } from 'timers';
+import { setInterval, clearInterval } from 'timers';
 
 @Component({
 	components: {
@@ -40,6 +43,7 @@ import { setInterval } from 'timers';
 export default class Test extends Vue {
 	private shadow: string = 'url(#dropShadow)';
 	private circles: ISVGCircle[] = [];
+	private interval: any = null;
 	private colors: string[] = [
 		'violet',
 		'indigo',
@@ -50,18 +54,31 @@ export default class Test extends Vue {
 		'red',
 	];
 
+	public stop() {
+		clearInterval(this.interval);
+	}
+
+	public start() {
+		this.startGeneratingCircles();
+	}
+
 	public mounted() {
-		setInterval(() => {
+		this.startGeneratingCircles();
+	}
+
+	public startGeneratingCircles(): void {
+		this.circles = [];
+		this.interval = setInterval(() => {
 			this.generateCircles();
-		}, 1000);
+		}, 5000);
 	}
 
 	public generateCircles(): void {
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 5; i++) {
 			this.circles.push({
 				x: this.rand(800),
 				y: this.rand(800),
-				r: this.rand(30),
+				r: this.rand(80),
 				color: `url(#${this.randColor()})`,
 				dropShadow: 'url(#dropShadow)',
 			});
