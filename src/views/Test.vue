@@ -21,6 +21,14 @@ div
 			:filter='c.dropShadow'
 			v-for='c in circles'
 		)
+		RectangleSVG(
+			:x='100'
+			:y='100'
+			:width="'100px'"
+			:height="'100px'"
+			:fill="'url(#orange)'"
+			:filter="'url(#dropShadow)'"
+		)
 </template>
 
 
@@ -28,6 +36,7 @@ div
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import CircleSVG from '@/views/CircleSVG.vue';
+import RectangleSVG from '@/views/RectangleSVG.vue';
 import SVGRadialGradient from '@/views/SVGRadialGradient.vue';
 import SVGDropShadow from '@/views/SVGDropShadow.vue';
 import ISVGCircle from '@/models/ISVGCircle';
@@ -36,6 +45,7 @@ import { setInterval, clearInterval } from 'timers';
 @Component({
 	components: {
 		CircleSVG,
+		RectangleSVG,
 		SVGRadialGradient,
 		SVGDropShadow,
 	},

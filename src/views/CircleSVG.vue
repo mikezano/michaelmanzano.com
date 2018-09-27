@@ -24,7 +24,9 @@ export default class CircleSVG extends Vue {
 
 	public move(): void {
 		console.log(this.el);
-		this.el.classList.add('toPoint');
+		setTimeout(() => {
+			this.$el.classList.add('to-point');
+		}, 100);
 	}
 }
 </script>
@@ -33,7 +35,7 @@ export default class CircleSVG extends Vue {
 .base {
 	transition: all 10.5s ease-in;
 }
-.toPoint {
+.to-point {
 	transform: translateX(-100px) translateY(-100px);
 }
 </style>
