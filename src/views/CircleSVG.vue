@@ -1,5 +1,17 @@
 <template lang="pug">
-circle(:cx='x' :cy='y' :r='r' :fill='color' :filter='shadow' class="base")
+transition(
+	@after-enter='kill'
+	@after-leave='restart'
+	leave-active-class='move')
+	circle(
+		:cx='x'
+		:cy='y'
+		:r='r'
+		:fill='color'
+		:filter='shadow'
+		class="base"
+		v-if='isAlive'
+	)
 //Example
 //circle(cx='200' cy='70' r='50' fill='url(#z)' filter="url(#f1)")
 </template>
@@ -15,18 +27,32 @@ export default class CircleSVG extends Vue {
 	@Prop() public color!: string;
 	@Prop() public shadow!: string;
 
-	public el: HTMLElement = this.$el;
+	public isAlive: boolean = true;
 
 	public mounted(): void {
-		this.el = this.$el;
-		this.move();
+		this.kill();
 	}
 
 	public move(): void {
-		console.log(this.el);
 		setTimeout(() => {
 			this.$el.classList.add('to-point');
 		}, 100);
+	}
+
+	public kill(): void {
+		this.isAlive = false;
+	}
+
+	public setup(): void {}
+
+	public restart(): void {
+		this.x = this.rand(500);
+		this.y = this.rand(500);
+		this.isAlive = true;
+	}
+
+	public rand(max: number): number {
+		return Math.floor(Math.random() * max);
 	}
 }
 </script>
@@ -35,7 +61,15 @@ export default class CircleSVG extends Vue {
 .base {
 	transition: all 10.5s ease-in;
 }
-.to-point {
-	transform: translateX(-100px) translateY(-100px);
+.move {
+	animation: move 10s linear;
+}
+@keyframes move {
+	from {
+		transform: translateX(0px) translateY(0px);
+	}
+	to {
+		transform: translateX(-500px) translateY(-500px);
+	}
 }
 </style>
