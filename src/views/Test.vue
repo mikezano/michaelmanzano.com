@@ -78,13 +78,14 @@ export default class Test extends Vue {
 
 	public startGeneratingCircles(): void {
 		this.circles = [];
-		this.interval = setInterval(() => {
-			this.generateCircles();
-		}, 5000);
+		this.generateCircles();
+		// this.interval = setInterval(() => {
+		// 	this.generateCircles();
+		// }, 5000);
 	}
 
 	public generateCircles(): void {
-		for (let i = 0; i < 5; i++) {
+		for (let i = 0; i < 50; i++) {
 			this.circles.push({
 				x: this.rand(800),
 				y: this.rand(800),

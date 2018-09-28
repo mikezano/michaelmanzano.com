@@ -4,16 +4,13 @@ transition(
 	@after-leave='restart'
 	leave-active-class='move')
 	circle(
-		:cx='x'
+		:cx='_x'
 		:cy='y'
 		:r='r'
 		:fill='color'
 		:filter='shadow'
-		class="base"
 		v-if='isAlive'
 	)
-//Example
-//circle(cx='200' cy='70' r='50' fill='url(#z)' filter="url(#f1)")
 </template>
 
 <script lang="ts">
@@ -21,14 +18,24 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class CircleSVG extends Vue {
-	@Prop() public x!: number;
-	@Prop() public y!: number;
-	@Prop() public r!: number;
-	@Prop() public color!: string;
-	@Prop() public shadow!: string;
+	@Prop()
+	public x!: number;
+	@Prop()
+	public y!: number;
+	@Prop()
+	public r!: number;
+	@Prop()
+	public color!: string;
+	@Prop()
+	public shadow!: string;
+
+	get _x(): string {
+		return this.x.toString();
+	}
 
 	public isAlive: boolean = true;
 
+	public copy(): void {}
 	public mounted(): void {
 		this.kill();
 	}
@@ -40,15 +47,21 @@ export default class CircleSVG extends Vue {
 	}
 
 	public kill(): void {
-		this.isAlive = false;
+		console.log('kill');
+		setTimeout(() => {
+			//this.isAlive = false;
+		}, this.rand(1000));
 	}
 
 	public setup(): void {}
 
 	public restart(): void {
-		this.x = this.rand(500);
-		this.y = this.rand(500);
+		//this.x = this.rand(500);
+		//this.y = this.rand(500);
 		this.isAlive = true;
+		//debugger;
+		//if (this.$el)
+		//	this.$el.style.animationDuration = `${this.rand(1000).toString()}s`;
 	}
 
 	public rand(max: number): number {
@@ -57,12 +70,11 @@ export default class CircleSVG extends Vue {
 }
 </script>
 
-<style lang="scss">
-.base {
-	transition: all 10.5s ease-in;
-}
+<style lang="scss" scope>
 .move {
-	animation: move 10s linear;
+	animation-name: move;
+	animation-timing-function: ease-in;
+	animation-duration: 10s;
 }
 @keyframes move {
 	from {
