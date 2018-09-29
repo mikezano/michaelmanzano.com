@@ -1,15 +1,15 @@
 <template lang="pug">
 transition(
+	name='move'
 	@after-enter='kill'
-	@after-leave='restart'
-	leave-active-class='move')
+	@after-leave='restart')
 	circle(
-		:cx='_x'
+		:cx='x'
 		:cy='y'
 		:r='r'
 		:fill='color'
 		:filter='shadow'
-		v-if='isAlive'
+		v-show='isAlive'
 	)
 </template>
 
@@ -47,18 +47,17 @@ export default class CircleSVG extends Vue {
 	}
 
 	public kill(): void {
-		console.log('kill');
-		setTimeout(() => {
-			//this.isAlive = false;
-		}, this.rand(1000));
+		//console.log('kill');
+		// setTimeout(() => {
+		this.isAlive = false;
+		// }, this.rand(10000) + 1000);
 	}
 
 	public setup(): void {}
 
 	public restart(): void {
-		//this.x = this.rand(500);
-		//this.y = this.rand(500);
 		this.isAlive = true;
+		console.log(this.$el);
 		//debugger;
 		//if (this.$el)
 		//	this.$el.style.animationDuration = `${this.rand(1000).toString()}s`;
@@ -70,8 +69,14 @@ export default class CircleSVG extends Vue {
 }
 </script>
 
-<style lang="scss" scope>
-.move {
+<style lang="scss">
+// .move {
+// 	animation-name: move;
+// 	animation-timing-function: ease-in;
+// 	animation-duration: 10s;
+// }
+
+.move-leave-active {
 	animation-name: move;
 	animation-timing-function: ease-in;
 	animation-duration: 10s;
