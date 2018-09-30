@@ -1,0 +1,8 @@
+//hsla(346, 100%, 71%, 1);
+//hsla(346, 100%, 91%, 1);
+
+$pink: hsla(346, 100%, 71%, 1);
+$pinkD1: darken($pink, 10%);
+$pinkD2: darken($pink, 20%);
+$pinkL1: lighten($pink, 10%);
+$pinkL2: lighten($pink, 20%);
