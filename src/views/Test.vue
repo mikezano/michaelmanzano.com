@@ -14,11 +14,11 @@ div
 			SVGDropShadow(:id="'dropShadow'")
 		rect(width='100%' height='100%' fill='#ddd')
 		CircleSVG(
+			:fill='c.color'
+			:filter='c.dropShadow'
 			:x='c.x'
 			:y='c.y'
 			:r='c.r'
-			:fill='c.color'
-			:filter='c.dropShadow'
 			v-for='c in circles'
 		)
 		RectangleSVG(
@@ -94,6 +94,7 @@ export default class Test extends Vue {
 				dropShadow: 'url(#dropShadow)',
 			});
 		}
+		console.log(this.circles);
 	}
 	public rand(max: number): number {
 		return Math.floor(Math.random() * max);

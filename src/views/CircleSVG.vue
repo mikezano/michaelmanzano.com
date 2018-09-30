@@ -7,14 +7,13 @@ transition(
 		:cx='x'
 		:cy='y'
 		:r='r'
-		:fill='color'
-		:filter='shadow'
 		v-show='isAlive'
 	)
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { setTimeout } from 'timers';
 
 @Component
 export default class CircleSVG extends Vue {
@@ -29,15 +28,10 @@ export default class CircleSVG extends Vue {
 	@Prop()
 	public shadow!: string;
 
-	get _x(): string {
-		return this.x.toString();
-	}
-
 	public isAlive: boolean = true;
 
-	public copy(): void {}
 	public mounted(): void {
-		this.kill();
+		//this.$el.style.webkitAnimationName
 	}
 
 	public move(): void {
@@ -47,20 +41,13 @@ export default class CircleSVG extends Vue {
 	}
 
 	public kill(): void {
-		//console.log('kill');
-		// setTimeout(() => {
-		this.isAlive = false;
-		// }, this.rand(10000) + 1000);
+		setTimeout(() => {
+			this.isAlive = false;
+		}, this.rand(10000));
 	}
-
-	public setup(): void {}
 
 	public restart(): void {
 		this.isAlive = true;
-		console.log(this.$el);
-		//debugger;
-		//if (this.$el)
-		//	this.$el.style.animationDuration = `${this.rand(1000).toString()}s`;
 	}
 
 	public rand(max: number): number {
