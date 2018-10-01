@@ -1,10 +1,12 @@
 <template lang="pug">
-.zano
-	Background(:isVisible='isBackgroundVisible' :introDone='startCurtains')
-		BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible')
-		TopRightCurtain
-		BottomLeftTriangle
-		TopRightTriangle
+div
+	button(@click='toggleCurtains') ToggleCurtains
+	.zano
+		Background(:isVisible='isBackgroundVisible' :introDone='startTriangles')
+			BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible' :onClosed='load')
+			TopRightCurtain(:isVisible='isTopRightCurtainVisible')
+			BottomLeftTriangle(:isVisible='isBottomLeftTriangleVisible' :introDone='closeCurtains')
+			TopRightTriangle(:isVisible='isTopRightTriangleVisible')
 </template>
 
 <script lang="ts">
@@ -25,15 +27,38 @@ import BottomLeftCurtain from '@/views/zano/BottomLeftCurtain.vue';
 	},
 })
 export default class Zano extends Vue {
-	public isBottomLeftCurtainVisible: boolean = true;
+	public isBottomLeftCurtainVisible: boolean = false;
+	public isTopRightCurtainVisible: boolean = false;
+	public isBottomLeftTriangleVisible: boolean = false;
+	public isTopRightTriangleVisible: boolean = false;
 	public isBackgroundVisible: boolean = false;
 
 	public mounted(): void {
 		this.isBackgroundVisible = true;
 	}
 
-	public startCurtains(): void {
+	public toggleCurtains(): void {
+		this.closeCurtains();
+	}
+
+	public startTriangles(): void {
+		console.log('triangles');
+		this.isBottomLeftTriangleVisible = true;
+		this.isTopRightTriangleVisible = true;
+	}
+
+	public load(): void {
+		this.openCurtains();
+	}
+
+	public closeCurtains(): void {
+		this.isBottomLeftCurtainVisible = true;
+		this.isTopRightCurtainVisible = true;
+	}
+
+	public openCurtains(): void {
 		this.isBottomLeftCurtainVisible = false;
+		this.isTopRightCurtainVisible = false;
 	}
 }
 </script>
