@@ -31,7 +31,7 @@ export default class TopRightCurtain extends Vue {
 }
 
 .leave {
-	animation: leave 0.5s $motion;
+	animation: leave $duration $motion;
 }
 
 @keyframes leave {

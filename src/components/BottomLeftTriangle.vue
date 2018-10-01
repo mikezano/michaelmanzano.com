@@ -33,7 +33,7 @@ $size:16rem;
 }
 
 .enter {
-	animation: enter 0.5s $motion;
+	animation: enter $duration $motion;
 }
 
 @keyframes enter {

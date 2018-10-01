@@ -3,7 +3,7 @@ div
 	.zano
 		Background(:isVisible='isBackgroundVisible' :introDone='startTriangles')
 			.fake-blt
-			Links
+			FindMe(:isVisible='isFindMeVisible')
 			BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible' :onClosed='load')
 			TopRightCurtain(:isVisible='isTopRightCurtainVisible')
 			BottomLeftTriangle(:isVisible='isBottomLeftTriangleVisible' :introDone='closeCurtains')
@@ -17,7 +17,7 @@ import BottomLeftTriangle from '@/components/BottomLeftTriangle.vue';
 import TopRightTriangle from '@/components/TopRightTriangle.vue';
 import TopRightCurtain from '@/components/TopRightCurtain.vue';
 import BottomLeftCurtain from '@/components/BottomLeftCurtain.vue';
-import Links from '@/components/Links.vue';
+import FindMe from '@/components/FindMe.vue';
 
 @Component({
 	components: {
@@ -26,7 +26,7 @@ import Links from '@/components/Links.vue';
 		BottomLeftCurtain,
 		TopRightTriangle,
 		TopRightCurtain,
-		Links,
+		FindMe,
 	},
 })
 export default class Zano extends Vue {
@@ -35,6 +35,7 @@ export default class Zano extends Vue {
 	public isBottomLeftTriangleVisible: boolean = false;
 	public isTopRightTriangleVisible: boolean = false;
 	public isBackgroundVisible: boolean = false;
+	public isFindMeVisible: boolean = false;
 
 	public mounted(): void {
 		this.isBackgroundVisible = true;
@@ -50,6 +51,7 @@ export default class Zano extends Vue {
 	}
 
 	public load(): void {
+		this.isFindMeVisible = true;
 		this.openCurtains();
 	}
 

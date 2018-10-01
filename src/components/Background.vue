@@ -31,7 +31,7 @@ export default class Background extends Vue {
 }
 
 .intro {
-	animation: intro 1s $motion;
+	animation: intro $duration $motion;
 }
 
 @keyframes intro {

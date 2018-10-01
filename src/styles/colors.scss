@@ -6,6 +6,7 @@ $pinkD1: darken($pink, 10%);
 $pinkD2: darken($pink, 20%);
 $pinkL1: lighten($pink, 10%);
 $pinkL2: lighten($pink, 20%);
+$pinkL3: lighten($pink, 30%);
 
 $blue: hsla(206, 100%, 39%, 1);
 $blueD1: darken($blue, 10%);
@@ -15,3 +16,4 @@ $blueL2: lighten($blue, 20%);
 
 //$motion: ease-in-out;
 $motion: cubic-bezier(0.45, 1.05, 0.28, 1.01);
+$duration: 0.5s;
