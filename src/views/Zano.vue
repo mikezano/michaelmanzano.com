@@ -2,6 +2,7 @@
 div
 	.zano
 		Background(:isVisible='isBackgroundVisible' :introDone='startTriangles')
+			.fake-blt
 			Links
 			BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible' :onClosed='load')
 			TopRightCurtain(:isVisible='isTopRightCurtainVisible')
@@ -73,14 +74,22 @@ export default class Zano extends Vue {
 	justify-content: center;
 	align-items: center;
 	height: 40rem;
+
+	font-family: 'Permanent Marker';
+}
+$size: 16rem;
+.fake-blt {
+	position: relative;
+	float: left;
+	bottom: 0;
+	left: 0;
+	width: $size;
+	height: $size;
+	background-color: none;
+	shape-outside: polygon(0 0, 100% 100%, 0 100%);
+	clip-path: polygon(0 0, 100% 100%, 0 100%);
 }
 
-body {
-	background: radial-gradient(black, #333);
-	background-attachment: fixed;
-	width: 100%;
-	height: 100%;
-}
 body {
 	$bg-color1: hsla(0, 0%, 15%, 1);
 	$bg-color2: hsla(0, 0%, 13%, 1);
