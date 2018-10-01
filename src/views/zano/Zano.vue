@@ -1,7 +1,7 @@
 <template lang="pug">
 .zano
-	Background
-		BottomLeftCurtain
+	Background(:isVisible='isBackgroundVisible' :introDone='startCurtains')
+		BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible')
 		TopRightCurtain
 		BottomLeftTriangle
 		TopRightTriangle
@@ -24,7 +24,18 @@ import BottomLeftCurtain from '@/views/zano/BottomLeftCurtain.vue';
 		TopRightCurtain,
 	},
 })
-export default class Zano extends Vue {}
+export default class Zano extends Vue {
+	public isBottomLeftCurtainVisible: boolean = true;
+	public isBackgroundVisible: boolean = false;
+
+	public mounted(): void {
+		this.isBackgroundVisible = true;
+	}
+
+	public startCurtains(): void {
+		this.isBottomLeftCurtainVisible = false;
+	}
+}
 </script>
 
 <style lang="scss">
@@ -32,8 +43,11 @@ export default class Zano extends Vue {}
 @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker');
 
 .zano {
+	border: 1px solid;
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	height: 40rem;
 }
 
 body {

@@ -1,6 +1,6 @@
 <template lang="pug">
 transition(
-	@after-enter='done'
+	@after-enter='introDone'
 	enter-active-class='intro')
 	.background(v-if="isVisible")
 		slot
@@ -11,15 +11,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Background extends Vue {
-	public isVisible: boolean = false;
-
-	public mounted(): void {
-		this.isVisible = true;
-	}
-
-	public done(): void {
-		alert('done');
-	}
+	@Prop()
+	public isVisible!: boolean;
+	@Prop()
+	public introDone!: Function;
 }
 </script>
 
@@ -31,6 +26,7 @@ export default class Background extends Vue {
 	height: 20rem;
 	//background-color: blue;
 	background: linear-gradient($pink, lighten(blue, 20%));
+	overflow: hidden;
 }
 
 .intro {
@@ -39,16 +35,18 @@ export default class Background extends Vue {
 
 @keyframes intro {
 	0% {
-		height: 0;
+		height: 1rem;
 		width: 0;
 		opacity: 0;
 	}
 
 	20% {
+		height: 1rem;
 		opacity: 1;
+		width: 0;
 	}
 	50% {
-		height: 0;
+		height: 1rem;
 		width: 40rem;
 	}
 
