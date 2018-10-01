@@ -25,12 +25,12 @@ export default class BottomLeftCurtain extends Vue {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	width: 77.5%;
+	width: 75%;
 	height: 100%;
 	background-color: orange;
 	//shape-outside: polygon(0 0, 100% 100%, 0 100%);
 	background: linear-gradient(45deg, $blueD2, $blueL1);
-	clip-path: polygon(0 0, 27.5% 0, 100% 100%, 0 100%);
+	clip-path: polygon(0 0, 32% 0, 100% 100%, 0 100%);
 }
 
 .leave {

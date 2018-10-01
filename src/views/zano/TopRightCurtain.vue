@@ -22,12 +22,12 @@ export default class TopRightCurtain extends Vue {
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 77.5%;
+	width: 75%;
 	height: 100%;
 	background-color: green;
 	background: linear-gradient(45deg, $blueL1, $blueD2);
 	//shape-outside: polygon(0 0, 100% 100%, 0 100%);
-	clip-path: polygon(0 0, 100% 0, 100% 100%, 72.5% 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 69% 100%);
 }
 
 .leave {

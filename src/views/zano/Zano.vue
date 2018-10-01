@@ -81,4 +81,70 @@ body {
 	width: 100%;
 	height: 100%;
 }
+body {
+	$bg-color1: hsla(0, 0%, 15%, 1);
+	$bg-color2: hsla(0, 0%, 13%, 1);
+	$bg-color3: rgba(38, 255, 0, 0);
+
+	background: radial-gradient(
+				circle farthest-side at 0% 50%,
+				$bg-color1 23.5%,
+				$bg-color3 0
+			)
+			21px 30px,
+		radial-gradient(
+				circle farthest-side at 0% 50%,
+				$bg-color2 24%,
+				$bg-color3 0
+			)
+			19px 30px,
+		linear-gradient(
+				$bg-color1 14%,
+				$bg-color3 0,
+				$bg-color3 85%,
+				$bg-color1 0
+			)
+			0 0,
+		linear-gradient(
+				150deg,
+				$bg-color1 24%,
+				$bg-color2 0,
+				$bg-color2 26%,
+				$bg-color3 0,
+				$bg-color3 74%,
+				$bg-color2 0,
+				$bg-color2 76%,
+				$bg-color1 0
+			)
+			0 0,
+		linear-gradient(
+				30deg,
+				$bg-color1 24%,
+				$bg-color2 0,
+				$bg-color2 26%,
+				$bg-color3 0,
+				$bg-color3 74%,
+				$bg-color2 0,
+				$bg-color2 76%,
+				$bg-color1 0
+			)
+			0 0,
+		linear-gradient(
+				90deg,
+				$bg-color2 2%,
+				$bg-color1 0,
+				$bg-color1 98%,
+				$bg-color2 0%
+			)
+			0 0 $bg-color1;
+	background-size: 40px 60px;
+	background-attachment: fixed;
+	background-color: #333;
+	animation: up-left 10s infinite linear;
+}
+@keyframes up-left {
+	100% {
+		background-position: -30px -30px;
+	}
+}
 </style>
