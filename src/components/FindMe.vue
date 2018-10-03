@@ -32,6 +32,7 @@ export default class FindMe extends Vue {
 	&__title {
 		font-size: 2rem;
 		text-align: left;
+		color: black;
 	}
 	&__item {
 		color: $pinkL3;
