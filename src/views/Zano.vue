@@ -7,6 +7,7 @@ div
 			BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible' :onClosed='load')
 			TopRightCurtain(:isVisible='isTopRightCurtainVisible')
 			BottomLeftTriangle(:isVisible='isBottomLeftTriangleVisible' :introDone='closeCurtains')
+			BottomLeftNavigation(:isVisible='isBottomLeftNavigationVisible' :onClick='test')
 			TopRightTriangle(:isVisible='isTopRightTriangleVisible')
 </template>
 
@@ -17,12 +18,14 @@ import BottomLeftTriangle from '@/components/BottomLeftTriangle.vue';
 import TopRightTriangle from '@/components/TopRightTriangle.vue';
 import TopRightCurtain from '@/components/TopRightCurtain.vue';
 import BottomLeftCurtain from '@/components/BottomLeftCurtain.vue';
+import BottomLeftNavigation from '@/components/BottomLeftNavigation.vue';
 import FindMe from '@/components/FindMe.vue';
 
 @Component({
 	components: {
 		Background,
 		BottomLeftTriangle,
+		BottomLeftNavigation,
 		BottomLeftCurtain,
 		TopRightTriangle,
 		TopRightCurtain,
@@ -31,6 +34,7 @@ import FindMe from '@/components/FindMe.vue';
 })
 export default class Zano extends Vue {
 	public isBottomLeftCurtainVisible: boolean = false;
+	public isBottomLeftNavigationVisible: boolean = false;
 	public isTopRightCurtainVisible: boolean = false;
 	public isBottomLeftTriangleVisible: boolean = false;
 	public isTopRightTriangleVisible: boolean = false;
@@ -41,6 +45,9 @@ export default class Zano extends Vue {
 		this.isBackgroundVisible = true;
 	}
 
+	public test(): void {
+		this.toggleCurtains();
+	}
 	public toggleCurtains(): void {
 		this.closeCurtains();
 	}
@@ -52,6 +59,7 @@ export default class Zano extends Vue {
 
 	public load(): void {
 		this.isFindMeVisible = true;
+		this.isBottomLeftNavigationVisible = true;
 		this.openCurtains();
 	}
 

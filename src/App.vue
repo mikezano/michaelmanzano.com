@@ -47,17 +47,19 @@ body {
 	transform: rotateX(70deg);
 	background: linear-gradient(
 			90deg,
-			#0892d0 3%,
-			transparent 3%,
-			transparent 96%,
-			#0892d0 0
+			transparent 0%,
+			rgba(8, 146, 208, 0.5) 4%,
+			#0892d0 5%,
+			rgba(8, 146, 208, 0.5) 6%,
+			transparent 10%
 		),
 		linear-gradient(
-			180deg,
-			#0892d0 3%,
-			transparent 3%,
-			transparent 96%,
-			#0892d0 0
+			1800deg,
+			transparent 0%,
+			rgba(8, 146, 208, 0.5) 4%,
+			#0892d0 5%,
+			rgba(8, 146, 208, 0.5) 6%,
+			transparent 10%
 		),
 		black;
 	background-repeat: repeat, repeat;
