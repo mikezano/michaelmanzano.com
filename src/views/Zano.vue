@@ -45,7 +45,8 @@ export default class Zano extends Vue {
 		this.isBackgroundVisible = true;
 	}
 
-	public test(): void {
+	public test(page: string): void {
+		console.log(page);
 		this.toggleCurtains();
 	}
 	public toggleCurtains(): void {

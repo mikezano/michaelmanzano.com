@@ -4,11 +4,11 @@ transition(
 	enter-active-class='enter'
 )
 	.bln(v-if='isVisible')
-		ul
-			li(@click='onClick') ABC
-			li DEF
-			li GHI
-			li JKL
+		.bln__triangle
+		p.bln__home(@click='navigate') Home
+		p.bln__etc(@click='navigate') ETC
+		p.bln__about(@click='navigate') About
+
 </template>
 
 <script lang="ts">
@@ -19,7 +19,11 @@ export default class BottomLeftNavigation extends Vue {
 	@Prop()
 	public isVisible!: boolean;
 	@Prop()
-	public onClick!: Function;
+	public onClick!: (page:string)=>void;
+
+	public navigate(): void {
+		this.onClick('hi');
+	}
 }
 </script>
 
@@ -34,16 +38,31 @@ $size: 16rem;
 	height: $size;
 	text-align: left;
 	color: white;
-
+	margin-top: 2rem;
 	shape-outside: polygon(0 0, 100% 100%, 0 100%);
 	//background: linear-gradient(45deg, $blueD2, $blueL1);
 	//clip-path: polygon(0 0, 32% 0, 100% 100%, 0 100%);
 	//shape-outside: polygon(0 0, 100% 100%, 0 100%);
 	//clip-path: polygon(0 0, 100% 100%, 0 100%);
-}
 
-ul {
-	margin-top: 5rem;
+	&__triangle {
+		//background: linear-gradient(black, white);
+		shape-outside: polygon(0 0, 100% 0, 100% 100%);
+		//clip-path: polygon(0 0, 100% 0, 100% 100%);
+		width: $size;
+		height: $size;
+		float: right;
+	}
+
+	&__home {
+		padding-top: 4rem;
+	}
+
+	&__home,
+	&__about,
+	&__etc {
+		text-align: right;
+	}
 }
 
 .leave {
