@@ -14,7 +14,7 @@ export default class Background extends Vue {
 	@Prop()
 	public isVisible!: boolean;
 	@Prop()
-	public introDone!: Function;
+	public introDone!: () => void;
 }
 </script>
 

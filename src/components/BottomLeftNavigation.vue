@@ -5,9 +5,9 @@ transition(
 )
 	.bln(v-if='isVisible')
 		.bln__triangle
-		p.bln__home(@click='navigate') Home
-		p.bln__etc(@click='navigate') ETC
-		p.bln__about(@click='navigate') About
+		p.bln__home(@click="navigate('Home')") Home
+		p.bln__etc(@click="navigate('Etc')") ETC
+		p.bln__about(@click="navigate('About')") About
 
 </template>
 
@@ -19,10 +19,10 @@ export default class BottomLeftNavigation extends Vue {
 	@Prop()
 	public isVisible!: boolean;
 	@Prop()
-	public onClick!: (page:string)=>void;
+	public onClick!: (page: string) => void;
 
-	public navigate(): void {
-		this.onClick('hi');
+	public navigate(page: string): void {
+		this.onClick(page);
 	}
 }
 </script>

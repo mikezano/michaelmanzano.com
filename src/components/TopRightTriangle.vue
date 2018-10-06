@@ -13,7 +13,7 @@ export default class TopRightTriangle extends Vue {
 	@Prop()
 	public isVisible!: boolean;
 	@Prop()
-	public introDone!: Function;
+	public introDone!: () => void;
 }
 </script>
 

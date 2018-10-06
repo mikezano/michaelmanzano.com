@@ -15,7 +15,7 @@ export default class BottomLeftCurtain extends Vue {
 	@Prop()
 	public isVisible!: boolean;
 	@Prop()
-	public onClosed!: Function;
+	public onClosed!: () => void;
 }
 </script>
 

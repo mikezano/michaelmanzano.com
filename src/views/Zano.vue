@@ -4,10 +4,11 @@ div
 		Background(:isVisible='isBackgroundVisible' :introDone='startTriangles')
 			.fake-blt
 			FindMe(:isVisible='isFindMeVisible')
+			Etc(:isVisible='isEtcVisible')
 			BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible' :onClosed='load')
 			TopRightCurtain(:isVisible='isTopRightCurtainVisible')
 			BottomLeftTriangle(:isVisible='isBottomLeftTriangleVisible' :introDone='closeCurtains')
-			BottomLeftNavigation(:isVisible='isBottomLeftNavigationVisible' :onClick='test')
+			BottomLeftNavigation(:isVisible='isBottomLeftNavigationVisible' :onClick='getNextPage')
 			TopRightTriangle(:isVisible='isTopRightTriangleVisible')
 </template>
 
@@ -20,6 +21,7 @@ import TopRightCurtain from '@/components/TopRightCurtain.vue';
 import BottomLeftCurtain from '@/components/BottomLeftCurtain.vue';
 import BottomLeftNavigation from '@/components/BottomLeftNavigation.vue';
 import FindMe from '@/components/FindMe.vue';
+import Etc from '@/components/Etc.vue';
 
 @Component({
 	components: {
@@ -30,6 +32,7 @@ import FindMe from '@/components/FindMe.vue';
 		TopRightTriangle,
 		TopRightCurtain,
 		FindMe,
+		Etc,
 	},
 })
 export default class Zano extends Vue {
@@ -40,15 +43,36 @@ export default class Zano extends Vue {
 	public isTopRightTriangleVisible: boolean = false;
 	public isBackgroundVisible: boolean = false;
 	public isFindMeVisible: boolean = false;
+	public isEtcVisible: boolean = false;
+	public nextPageName: string = '';
 
 	public mounted(): void {
 		this.isBackgroundVisible = true;
 	}
 
-	public test(page: string): void {
-		console.log(page);
-		this.toggleCurtains();
+	public setNextPage(): void {
+		this.isFindMeVisible = false;
+		this.isEtcVisible = false;
+		switch (this.nextPageName) {
+			case 'FindMe':
+				this.isFindMeVisible = true;
+				break;
+			case 'Etc':
+				this.isEtcVisible = true;
+				break;
+			default:
+				this.isFindMeVisible = true;
+				break;
+		}
+
+		this.openCurtains();
 	}
+
+	public getNextPage(page: string): void {
+		this.nextPageName = page;
+		this.closeCurtains();
+	}
+
 	public toggleCurtains(): void {
 		this.closeCurtains();
 	}
@@ -59,9 +83,14 @@ export default class Zano extends Vue {
 	}
 
 	public load(): void {
-		this.isFindMeVisible = true;
-		this.isBottomLeftNavigationVisible = true;
-		this.openCurtains();
+
+		if ( this.nextPageName !== '') {
+			this.setNextPage();
+		} else {
+			this.isFindMeVisible = true;
+			this.isBottomLeftNavigationVisible = true;
+			this.openCurtains();
+		}
 	}
 
 	public closeCurtains(): void {
