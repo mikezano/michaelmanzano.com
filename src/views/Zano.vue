@@ -3,6 +3,7 @@ div
 	.zano
 		Background(:isVisible='isBackgroundVisible' :introDone='startTriangles')
 			.fake-blt
+			.fake-trt
 			FindMe(:isVisible='isFindMeVisible')
 			Etc(:isVisible='isEtcVisible')
 			BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible' :onClosed='load')
@@ -83,8 +84,7 @@ export default class Zano extends Vue {
 	}
 
 	public load(): void {
-
-		if ( this.nextPageName !== '') {
+		if (this.nextPageName !== '') {
 			this.setNextPage();
 		} else {
 			this.isFindMeVisible = true;
@@ -117,16 +117,29 @@ export default class Zano extends Vue {
 
 	font-family: 'Permanent Marker';
 }
-$size: 16rem;
-.fake-blt {
+$size: 20rem;
+
+.fake-blt,
+.fake-trt {
 	position: relative;
-	float: left;
-	bottom: 0;
-	left: 0;
 	width: $size;
 	height: $size;
 	background-color: none;
+}
+
+.fake-blt {
+	float: left;
+	bottom: 0;
+	left: 0;
 	shape-outside: polygon(0 0, 100% 100%, 0 100%);
 	clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.fake-trt {
+	float: right;
+	top: 0;
+	right: 0;
+	shape-outside: polygon(0 0, 100% 100%, 100% 0);
+	clip-path: polygon(0 0, 100% 100%, 100% 0);
 }
 </style>

@@ -63,7 +63,7 @@ body {
 		),
 		black;
 	background-repeat: repeat, repeat;
-	background-position: 0 0, 25px 25px;
+	background-position: 0 0, 50px 50px;
 	background-size: 50px 50px, 50px 50px;
 	animation: move 20s linear infinite;
 }
