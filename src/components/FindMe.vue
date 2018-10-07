@@ -2,20 +2,22 @@
 .find-me(v-if="isVisible")
 	.find-me__title Find me here:
 	.find-me__links
-		a.find-me__link-item
-			img.image(src='../assets/codepen.svg')
-			div.title Code Pen
-		//- a.find-me__item(href='https://codepen.io/_zan0/' target='_blank') Code Pen
-		//- 	//img(src='../assets/codepen.svg')
-		//- a.find-me__item(href='https://twitter.com/_zan0' target='_blank') Twitter
-		//- 	//img(src='../assets/facebook.svg')
-		//- a.find-me__item(href='https://www.instagram.com/mikezan0/' target='_blank') Instagram
-		//- 	//img(src='../assets/instagram.svg')
-		//- a.find-me__item(href='https://zan0.bandcamp.com/' target='_blank') BandCamp
-		//- 	//img(src='../assets/soundcloud.svg')
-		//- a.find-me__item(href='https://soundcloud.com/djzan0' target='_blank') SoundCloud
-		//- 	//img(src='../assets/soundcloud.svg')
-		//- a.find-me__item(href='' target='_blank') Facebook
+
+		a.find-me__item(href='https://codepen.io/_zan0/' target='_blank')
+			img(src='../assets/codepen.png')
+			span Code Pen
+		a.find-me__item(href='https://twitter.com/_zan0' target='_blank')
+			img(src='../assets/twitter.svg')
+			span Twitter
+		a.find-me__item(href='https://www.instagram.com/mikezan0/' target='_blank')
+			img(src='../assets/instagram.svg')
+			span Instagram
+		a.find-me__item(href='https://zan0.bandcamp.com/' target='_blank')
+			img(src='../assets/bandcamp.png')
+			span BandCamp
+		a.find-me__item(href='https://soundcloud.com/djzan0' target='_blank')
+			img(src='../assets/soundcloud.svg')
+			span SoundCloud
 </template>
 
 
@@ -35,31 +37,38 @@ export default class FindMe extends Vue {
 	&__title,
 	&__item {
 		text-align: left;
-		//margin-right: 3rem;
-		display: inline-block;
+	}
+
+	&__links {
+		margin-top: 1rem;
 	}
 	&__title {
 		font-size: 2rem;
 		color: black;
 	}
 	&__item {
-		width: 10rem;
 		color: $pinkL3;
 		font-weight: bold;
 		font-size: 1.5rem;
 		text-decoration: none;
-	}
+		display: inline-flex;
+		height: 2rem;
+		border-bottom: 0.1rem solid transparent;
+		padding-bottom: 0.2rem;
+		margin-bottom: 0.8rem;
 
-	&__link-item {
-		display: flex;
-
-		.image {
+		img {
 			width: 2rem;
 			height: 2rem;
 		}
-		.title {
-			color: white;
+		span {
 			width: 8rem;
+			margin-left: 0.5rem;
+		}
+
+		&:hover {
+			transition: border-bottom 0.2s ease-in-out;
+			border-bottom: 0.1rem solid $pinkL1;
 		}
 	}
 }

@@ -62,6 +62,7 @@ $size: 16rem;
 	&__about,
 	&__etc {
 		text-align: right;
+		font-size: 1.2rem;
 	}
 }
 
