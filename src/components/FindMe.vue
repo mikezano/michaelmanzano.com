@@ -56,6 +56,7 @@ export default class FindMe extends Vue {
 		border-bottom: 0.1rem solid transparent;
 		padding-bottom: 0.2rem;
 		margin-bottom: 0.8rem;
+		width: 14rem;
 
 		img {
 			width: 2rem;
