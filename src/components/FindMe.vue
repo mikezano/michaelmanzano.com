@@ -2,32 +2,49 @@
 .find-me(v-if="isVisible")
 	.find-me__title Find me here:
 	.find-me__links
-
-		a.find-me__item(href='https://codepen.io/_zan0/' target='_blank')
-			img(src='../assets/codepen.png')
-			span Code Pen
-		a.find-me__item(href='https://twitter.com/_zan0' target='_blank')
-			img(src='../assets/twitter.svg')
-			span Twitter
-		a.find-me__item(href='https://www.instagram.com/mikezan0/' target='_blank')
-			img(src='../assets/instagram.svg')
-			span Instagram
-		a.find-me__item(href='https://zan0.bandcamp.com/' target='_blank')
-			img(src='../assets/bandcamp.png')
-			span BandCamp
-		a.find-me__item(href='https://soundcloud.com/djzan0' target='_blank')
-			img(src='../assets/soundcloud.svg')
-			span SoundCloud
+		a.find-me__item(:href='link.url' target='_blank' v-for="link in links" :class="{'in-front' : isInFront}")
+			img(:src="link.icon")
+			span {{link.name}}
 </template>
 
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-
+import { ILink } from '@/models/IModels';
 @Component
 export default class FindMe extends Vue {
 	@Prop()
 	public isVisible: boolean = false;
+	@Prop()
+	public isInFront: boolean = false;
+
+	public links: ILink[] = [
+		{
+			url: 'https://codepen.io/_zan0/',
+			name: 'Code Pen',
+			icon: require('../assets/codepen.png'),
+		},
+		{
+			url: 'https://twitter.com/_zan0',
+			name: 'Twitter',
+			icon: require('../assets/twitter.svg'),
+		},
+		{
+			url: 'https://www.instagram.com/mikezan0/',
+			name: 'Instagram',
+			icon: require('../assets/instagram.svg'),
+		},
+		{
+			url: 'https://zan0.bandcamp.com/',
+			name: 'Bandcamp',
+			icon: require('../assets/bandcamp.png'),
+		},
+		{
+			url: 'https://soundcloud.com/djzan0',
+			name: 'Soundcloud',
+			icon: require('../assets/soundcloud.svg'),
+		},
+	];
 }
 </script>
 

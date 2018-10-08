@@ -3,6 +3,7 @@ transition(
 	leave-active-class='leave'
 	enter-active-class='enter'
 	@after-enter='onClosed'
+	@after-leave='afterOpened'
 )
 	.blc(v-if='isVisible')
 </template>
@@ -16,6 +17,8 @@ export default class BottomLeftCurtain extends Vue {
 	public isVisible!: boolean;
 	@Prop()
 	public onClosed!: () => void;
+	@Prop()
+	public afterOpened!: () => void;
 }
 </script>
 

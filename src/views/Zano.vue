@@ -4,9 +4,9 @@ div
 		Background(:isVisible='isBackgroundVisible' :introDone='startTriangles')
 			.fake-blt
 			.fake-trt
-			FindMe(:isVisible='isFindMeVisible')
-			Etc(:isVisible='isEtcVisible')
-			BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible' :onClosed='load')
+			FindMe(:isVisible='isFindMeVisible' :isInFront='isinFront')
+			Etc(:isVisible='isEtcVisible' )
+			BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible' :onClosed='load' :afterOpened='bringToFront')
 			TopRightCurtain(:isVisible='isTopRightCurtainVisible')
 			BottomLeftTriangle(:isVisible='isBottomLeftTriangleVisible' :introDone='closeCurtains')
 			BottomLeftNavigation(:isVisible='isBottomLeftNavigationVisible' :onClick='getNextPage')
@@ -46,14 +46,22 @@ export default class Zano extends Vue {
 	public isFindMeVisible: boolean = false;
 	public isEtcVisible: boolean = false;
 	public nextPageName: string = '';
+	public isInFront: boolean = false;
 
 	public mounted(): void {
 		this.isBackgroundVisible = true;
 	}
 
+	public bringToFront(): void {
+		this.isInFront = true;
+	}
+
 	public setNextPage(): void {
+
 		this.isFindMeVisible = false;
 		this.isEtcVisible = false;
+		this.isInFront = false;
+
 		switch (this.nextPageName) {
 			case 'FindMe':
 				this.isFindMeVisible = true;
