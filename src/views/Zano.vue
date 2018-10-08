@@ -4,7 +4,7 @@ div
 		Background(:isVisible='isBackgroundVisible' :introDone='startTriangles')
 			.fake-blt
 			.fake-trt
-			FindMe(:isVisible='isFindMeVisible' :isInFront='isinFront')
+			FindMe(:isVisible='isFindMeVisible' :isInFront='isInFront')
 			Etc(:isVisible='isEtcVisible' )
 			BottomLeftCurtain(:isVisible='isBottomLeftCurtainVisible' :onClosed='load' :afterOpened='bringToFront')
 			TopRightCurtain(:isVisible='isTopRightCurtainVisible')
@@ -57,10 +57,8 @@ export default class Zano extends Vue {
 	}
 
 	public setNextPage(): void {
-
 		this.isFindMeVisible = false;
 		this.isEtcVisible = false;
-		this.isInFront = false;
 
 		switch (this.nextPageName) {
 			case 'FindMe':
@@ -78,6 +76,7 @@ export default class Zano extends Vue {
 	}
 
 	public getNextPage(page: string): void {
+		this.isInFront = false;
 		this.nextPageName = page;
 		this.closeCurtains();
 	}

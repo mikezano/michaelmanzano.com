@@ -50,6 +50,11 @@ export default class FindMe extends Vue {
 
 <style lang="scss" scoped>
 @import '../styles/colors';
+
+.in-front {
+	position: relative;
+	z-index: 1;
+}
 .find-me {
 	&__title,
 	&__item {
