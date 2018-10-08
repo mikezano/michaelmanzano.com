@@ -2,7 +2,12 @@
 .find-me(v-if="isVisible")
 	.find-me__title Find me here:
 	.find-me__links
-		a.find-me__item(:href='link.url' target='_blank' v-for="link in links" :class="{'in-front' : isInFront}")
+		a.find-me__item(
+			v-for="link in links"
+			:href='link.url'
+			:class="{'in-front' : isInFront}"
+			target='_blank' 
+		)
 			img(:src="link.icon")
 			span {{link.name}}
 </template>
@@ -64,35 +69,39 @@ export default class FindMe extends Vue {
 	&__links {
 		margin-top: 1rem;
 	}
+
 	&__title {
 		font-size: 2rem;
 		color: black;
 	}
+
 	&__item {
 		color: $pinkL3;
-		font-weight: bold;
-		font-size: 1.5rem;
-		text-decoration: none;
 		display: inline-flex;
-		height: 2rem;
-		border-bottom: 0.1rem solid transparent;
-		padding-bottom: 0.2rem;
-		margin-bottom: 0.8rem;
-		width: 14rem;
+		position: relative;
 
 		img {
 			width: 2rem;
 			height: 2rem;
 		}
 		span {
-			width: 8rem;
+			font-size: 1.8rem;
+			width: auto;
 			margin-left: 0.5rem;
 		}
 
-		&:hover {
-			transition: border-bottom 0.2s ease-in-out;
+		&:hover::before {
+			transition: all 0.2s ease-in-out;
 			border-bottom: 0.1rem solid $pinkL1;
+			width: 100%;
 		}
+	}
+	&__item::before {
+		content: '';
+		position: absolute;
+		height: 2rem;
+		width: 0;
+		border-bottom: 0.1rem white;
 	}
 }
 </style>
