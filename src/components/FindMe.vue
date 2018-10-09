@@ -79,29 +79,33 @@ export default class FindMe extends Vue {
 		color: $pinkL3;
 		display: inline-flex;
 		position: relative;
+		text-decoration: none;
+		margin-bottom: 1rem;
 
 		img {
 			width: 2rem;
 			height: 2rem;
 		}
 		span {
-			font-size: 1.8rem;
+			font-size: 1.7rem;
+			height: 2rem;
 			width: auto;
 			margin-left: 0.5rem;
 		}
 
 		&:hover::before {
 			transition: all 0.2s ease-in-out;
-			border-bottom: 0.1rem solid $pinkL1;
+			border-bottom: 0.3rem solid $pinkL1;
 			width: 100%;
 		}
 	}
 	&__item::before {
 		content: '';
 		position: absolute;
+		padding-bottom: 0.2rem;
 		height: 2rem;
 		width: 0;
-		border-bottom: 0.1rem white;
+		border-bottom: 0.3rem solid white;
 	}
 }
 </style>
