@@ -27,7 +27,7 @@ export default class Background extends Vue {
 	//background-color: blue;
 	background: linear-gradient($pink, lighten(blue, 20%));
 	overflow: hidden;
-	box-shadow: 0 0 2rem black;
+	box-shadow: 0 0 2rem $pinkL1;
 }
 
 .intro {
@@ -36,6 +36,7 @@ export default class Background extends Vue {
 
 @keyframes intro {
 	0% {
+		transform: perspective(500px) translateZ(300px);
 		height: 1rem;
 		width: 0;
 		opacity: 0;
@@ -54,6 +55,7 @@ export default class Background extends Vue {
 	100% {
 		height: 20rem;
 		width: 40rem;
+		transform: translateZ(0);
 	}
 }
 </style>

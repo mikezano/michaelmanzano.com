@@ -37,11 +37,13 @@ body {
 	perspective: 1000px;
 	perspective-origin: top;
 	overflow: hidden;
+	border: 1px solid white;
 }
 #app-background {
-	border-top: 0.1rem solid lighten(#0892d0, 20%);
+	border-top: 0.3rem solid lighten($blueD1, 20%);
 	width: 100%;
 	height: 100%;
+	min-height: 800px;
 	transform-origin: 50% 0;
 	transform-style: preserve-3d;
 	transform: rotateX(70deg);
