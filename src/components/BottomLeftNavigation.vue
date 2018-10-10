@@ -6,7 +6,7 @@ transition(
 	.bln(v-if='isVisible')
 		.bln__triangle
 		p.bln__home(@click="navigate('Home')") Home
-		p.bln__etc(@click="navigate('Etc')") ETC
+		p.bln__etc(@click="navigate('Etc')") Find Me
 		p.bln__about(@click="navigate('About')") About
 
 </template>
@@ -62,7 +62,7 @@ $size: 16rem;
 	&__about,
 	&__etc {
 		text-align: right;
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 	}
 }
 

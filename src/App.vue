@@ -14,14 +14,15 @@
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker');
+//@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker');
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
 @import 'styles/colors.scss';
 body {
 	padding: 0;
 	margin: 0;
 }
 #app {
-	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	font-family: 'Audiowide';
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #0892d0;

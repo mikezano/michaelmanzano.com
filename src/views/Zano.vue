@@ -1,6 +1,7 @@
 <template lang="pug">
 div
 	.zano
+		Logo
 		Background(:isVisible='isBackgroundVisible' :introDone='startTriangles')
 			.fake-blt
 			.fake-trt
@@ -15,6 +16,7 @@ div
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import Logo from '@/components/Logo.vue';
 import Background from '@/components/Background.vue';
 import BottomLeftTriangle from '@/components/BottomLeftTriangle.vue';
 import TopRightTriangle from '@/components/TopRightTriangle.vue';
@@ -26,6 +28,7 @@ import Etc from '@/components/Etc.vue';
 
 @Component({
 	components: {
+		Logo,
 		Background,
 		BottomLeftTriangle,
 		BottomLeftNavigation,
@@ -114,15 +117,16 @@ export default class Zano extends Vue {
 
 <style lang="scss">
 @import '../styles/colors.scss';
-@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker');
+//@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker');
 
 .zano {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	height: 40rem;
 
-	font-family: 'Permanent Marker';
+	font-family: 'Audiowide';
 }
 $size: 20rem;
 

@@ -28,6 +28,7 @@ export default class Background extends Vue {
 	background: linear-gradient($pink, lighten(blue, 20%));
 	overflow: hidden;
 	box-shadow: 0 0 2rem $pinkL1;
+	border-radius: 0.4rem;
 }
 
 .intro {
