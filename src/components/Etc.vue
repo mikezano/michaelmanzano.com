@@ -1,12 +1,9 @@
 <template lang="pug">
 .etc(v-if="isVisible")
-    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    | In non libero eget ligula volutpat sollicitudin. In hac habitasse platea dictumst.
-    | Phasellus vehicula, risus nec hendrerit tristique, elit dui lacinia mauris, ut porta erat nisl eget lacus.
-    | Donec vestibulum, lacus ut fermentum dapibus, est metus feugiat ligula,
-    | ut maximus ex lectus vitae risus. Vivamus auctor, metus sagittis 
-    | fermentum posuere, ipsum arcu tristique ex, ut fringilla neque tortor nec felis.
-    | Nam interdum rhoncus massa at consectetur. Quisque enim dui, vestibulum sit amet libero nec, efficitur maximus nulla.
+	| Software Engineer at Intel for 7+ years, Michael has dedicated much of his time learning .NET backends
+	| and Javascript front ends. With a previous background in the video game industry, Michael has
+	| developed a passion for the visual aspects of engineering and the ways they can be applied on the web
+	| via CSS.  Always looking for the opportunity, Michael is eager to share his knowledge with others.
 </template>
 
 
@@ -15,13 +12,15 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Etc extends Vue {
-	@Prop() public isVisible: boolean = false;
+	@Prop()
+	public isVisible: boolean = false;
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../styles/colors';
 .etc {
-    color:white;
+	color: white;
+	margin-top: 1.5rem;
 }
 </style>

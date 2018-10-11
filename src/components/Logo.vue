@@ -1,5 +1,5 @@
 <template lang="pug">
-.logo Zano
+.logo ZANO
 </template>
 
 
@@ -20,11 +20,11 @@ export default class Logo extends Vue {
 	color: white;
 	font-family: 'Audiowide';
 	font-size: 5rem;
-	animation: glow 1s ease-in infinite;
+	animation: glow 3s ease-in infinite;
 
 	-webkit-text-fill-color: transparent;
 	-webkit-text-stroke: 0.5px #8fdcea;
-	-webkit-background-clip: text;
+	//-webkit-background-clip: text;
 }
 
 @keyframes glow {
