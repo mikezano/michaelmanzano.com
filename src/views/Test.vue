@@ -12,9 +12,4 @@ export default class Test extends Vue {}
 </script>
 
 <style lang="scss">
-#app,
-#app-background-container,
-#app-background {
-  background: none;
-}
 </style>
