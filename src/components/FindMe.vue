@@ -14,8 +14,8 @@
 
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import { ILink } from "@/models/IModels";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { ILink } from '@/models/IModels';
 @Component
 export default class FindMe extends Vue {
 	@Prop()
@@ -25,36 +25,36 @@ export default class FindMe extends Vue {
 
 	public links: ILink[] = [
 		{
-			url: "https://codepen.io/_zan0/",
-			name: "Code Pen",
-			icon: require("../assets/codepen.png")
+			url: 'https://codepen.io/_zan0/',
+			name: 'Code Pen',
+			icon: require('../assets/codepen.png')
 		},
 		{
-			url: "https://twitter.com/_zan0",
-			name: "Twitter",
-			icon: require("../assets/twitter.svg")
+			url: 'https://twitter.com/_zan0',
+			name: 'Twitter',
+			icon: require('../assets/twitter.svg')
 		},
 		{
-			url: "https://www.instagram.com/mikezan0/",
-			name: "Instagram",
-			icon: require("../assets/instagram.svg")
+			url: 'https://www.instagram.com/mikezan0/',
+			name: 'Instagram',
+			icon: require('../assets/instagram.svg')
 		},
 		{
-			url: "https://zan0.bandcamp.com/",
-			name: "Bandcamp",
-			icon: require("../assets/bandcamp.png")
+			url: 'https://zan0.bandcamp.com/',
+			name: 'Bandcamp',
+			icon: require('../assets/bandcamp.png')
 		},
 		{
-			url: "https://soundcloud.com/djzan0",
-			name: "Soundcloud",
-			icon: require("../assets/soundcloud.svg")
+			url: 'https://soundcloud.com/djzan0',
+			name: 'Soundcloud',
+			icon: require('../assets/soundcloud.svg')
 		}
 	];
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/colors";
+@import '../styles/colors';
 
 .in-front {
 	position: relative;
@@ -101,7 +101,7 @@ export default class FindMe extends Vue {
 		}
 	}
 	&__item::before {
-		content: "";
+		content: '';
 		position: absolute;
 		padding-bottom: 0.2rem;
 		height: 2rem;
@@ -113,6 +113,10 @@ export default class FindMe extends Vue {
 @media screen and (max-width: 600px) {
 	.find-me__title {
 		display: none;
+	}
+	.find-me {
+		display: flex;
+		flex-direction: column;
 	}
 }
 </style>
