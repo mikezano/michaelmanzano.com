@@ -8,7 +8,7 @@
 			<router-link to="/">Home</router-link> |
 			<router-link to="/about">About</router-link> |
 			<router-link to="/test">Test</router-link>
-		</div> -->
+		</div>-->
 		<router-view/>
 	</div>
 </template>
@@ -16,13 +16,13 @@
 <style lang="scss">
 //@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker');
 @import url(https://fonts.googleapis.com/css?family=Audiowide);
-@import 'styles/colors.scss';
+@import "styles/colors.scss";
 body {
 	padding: 0;
 	margin: 0;
 }
 #app {
-	font-family: 'Audiowide';
+	font-family: "Audiowide";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #0892d0;
@@ -37,7 +37,6 @@ body {
 	perspective: 1000px;
 	perspective-origin: top;
 	overflow: hidden;
-	border: 1px solid white;
 }
 #app-background {
 	border-top: 0.3rem solid lighten($blueD1, 20%);
@@ -82,6 +81,12 @@ body {
 		&.router-link-exact-active {
 			color: #42b983;
 		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	#app-background-container {
+		top: 200px;
 	}
 }
 </style>

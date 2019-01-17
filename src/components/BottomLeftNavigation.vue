@@ -11,7 +11,7 @@ transition(
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class BottomLeftNavigation extends Vue {
@@ -27,7 +27,14 @@ export default class BottomLeftNavigation extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/colors.scss';
+@import "../styles/colors.scss";
+
+@media screen and (max-width: 600px) {
+	.bln {
+		display: none;
+	}
+}
+
 $size: 16rem;
 .bln {
 	position: absolute;

@@ -6,7 +6,7 @@ transition(
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class TopRightTriangle extends Vue {
@@ -18,7 +18,13 @@ export default class TopRightTriangle extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/colors.scss';
+@import "../styles/colors.scss";
+
+@media screen and (max-width: 600px) {
+	.trt {
+		display: none;
+	}
+}
 $size: 16rem;
 .trt {
 	position: absolute;

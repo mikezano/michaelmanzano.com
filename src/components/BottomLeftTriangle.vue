@@ -7,7 +7,7 @@ transition(
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class BottomLeftTriangle extends Vue {
@@ -19,8 +19,14 @@ export default class BottomLeftTriangle extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/colors.scss';
-$size:16rem;
+@import "../styles/colors.scss";
+
+@media screen and (max-width: 600px) {
+	.blt {
+		display: none;
+	}
+}
+$size: 16rem;
 .blt {
 	position: absolute;
 	bottom: 0;

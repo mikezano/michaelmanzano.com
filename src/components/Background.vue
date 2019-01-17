@@ -7,7 +7,7 @@ transition(
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class Background extends Vue {
@@ -19,7 +19,8 @@ export default class Background extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/colors.scss';
+@import "../styles/colors.scss";
+
 .background {
 	position: relative;
 	width: 40rem;
@@ -29,6 +30,11 @@ export default class Background extends Vue {
 	overflow: hidden;
 	box-shadow: 0 0 2rem $pinkL1;
 	border-radius: 0.4rem;
+}
+@media screen and (max-width: 600px) {
+	.background {
+		width: 30rem;
+	}
 }
 
 .intro {

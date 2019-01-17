@@ -8,7 +8,7 @@
 
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class Etc extends Vue {
@@ -18,7 +18,7 @@ export default class Etc extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/colors';
+@import "../styles/colors";
 .etc {
 	color: white;
 	margin-top: 1.5rem;

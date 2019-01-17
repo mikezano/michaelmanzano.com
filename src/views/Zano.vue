@@ -15,16 +15,16 @@ div
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import Logo from '@/components/Logo.vue';
-import Background from '@/components/Background.vue';
-import BottomLeftTriangle from '@/components/BottomLeftTriangle.vue';
-import TopRightTriangle from '@/components/TopRightTriangle.vue';
-import TopRightCurtain from '@/components/TopRightCurtain.vue';
-import BottomLeftCurtain from '@/components/BottomLeftCurtain.vue';
-import BottomLeftNavigation from '@/components/BottomLeftNavigation.vue';
-import FindMe from '@/components/FindMe.vue';
-import Etc from '@/components/Etc.vue';
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Logo from "@/components/Logo.vue";
+import Background from "@/components/Background.vue";
+import BottomLeftTriangle from "@/components/BottomLeftTriangle.vue";
+import TopRightTriangle from "@/components/TopRightTriangle.vue";
+import TopRightCurtain from "@/components/TopRightCurtain.vue";
+import BottomLeftCurtain from "@/components/BottomLeftCurtain.vue";
+import BottomLeftNavigation from "@/components/BottomLeftNavigation.vue";
+import FindMe from "@/components/FindMe.vue";
+import Etc from "@/components/Etc.vue";
 
 @Component({
 	components: {
@@ -36,8 +36,8 @@ import Etc from '@/components/Etc.vue';
 		TopRightTriangle,
 		TopRightCurtain,
 		FindMe,
-		Etc,
-	},
+		Etc
+	}
 })
 export default class Zano extends Vue {
 	public isBottomLeftCurtainVisible: boolean = false;
@@ -48,7 +48,7 @@ export default class Zano extends Vue {
 	public isBackgroundVisible: boolean = false;
 	public isFindMeVisible: boolean = false;
 	public isEtcVisible: boolean = false;
-	public nextPageName: string = '';
+	public nextPageName: string = "";
 	public isInFront: boolean = false;
 
 	public mounted(): void {
@@ -64,10 +64,10 @@ export default class Zano extends Vue {
 		this.isEtcVisible = false;
 
 		switch (this.nextPageName) {
-			case 'FindMe':
+			case "FindMe":
 				this.isFindMeVisible = true;
 				break;
-			case 'Etc':
+			case "Etc":
 				this.isEtcVisible = true;
 				break;
 			default:
@@ -94,7 +94,7 @@ export default class Zano extends Vue {
 	}
 
 	public load(): void {
-		if (this.nextPageName !== '') {
+		if (this.nextPageName !== "") {
 			this.setNextPage();
 		} else {
 			this.isFindMeVisible = true;
@@ -116,7 +116,7 @@ export default class Zano extends Vue {
 </script>
 
 <style lang="scss">
-@import '../styles/colors.scss';
+@import "../styles/colors.scss";
 //@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker');
 
 .zano {
@@ -126,7 +126,7 @@ export default class Zano extends Vue {
 	align-items: center;
 	height: 40rem;
 
-	font-family: 'Audiowide';
+	font-family: "Audiowide";
 }
 $size: 20rem;
 
@@ -153,4 +153,15 @@ $size: 20rem;
 	shape-outside: polygon(0 0, 100% 100%, 100% 0);
 	clip-path: polygon(0 0, 100% 100%, 100% 0);
 }
+
+@media screen and (max-width: 600px) {
+	.fake-blt {
+		display: none;
+	}
+
+	.zano {
+		margin-top: -6rem;
+	}
+}
 </style>
+
