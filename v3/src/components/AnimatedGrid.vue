@@ -21,15 +21,15 @@
     transform: rotateX(90deg);
     background: linear-gradient(90deg,
             transparent 0%,
-            var(--electric-blue) 4%,
-            var(--electric-blue) 5%,
-            var(--electric-blue) 6%,
+            var(--electric-blue-light) 4%,
+            var(--electric-blue-light) 5%,
+            var(--electric-blue-light) 6%,
             transparent 10%),
         linear-gradient(180deg,
             transparent 0%,
-            var(--electric-blue) 4%,
-            var(--electric-blue) 5%,
-            var(--electric-blue) 6%,
+            var(--electric-blue-light) 4%,
+            var(--electric-blue-light) 5%,
+            var(--electric-blue-light) 6%,
             transparent 10%),
         black;
     background-repeat: repeat, repeat;

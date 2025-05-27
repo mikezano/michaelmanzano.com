@@ -33,7 +33,7 @@ defineProps<{
 }
 
 .enter {
-    animation: enter 0.5s ease-in-out;
+    animation: enter 0.5s var(--motion);
 }
 
 @keyframes enter {

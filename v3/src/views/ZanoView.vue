@@ -7,14 +7,18 @@ import TopRightCurtain from '../components/TopRightCurtain.vue'
 import BottomLeftNavigation from '../components/BottomLeftNavigation.vue'
 import BottomLeftTriangle from '../components/BottomLeftTriangle.vue'
 import TopRightTriangle from '../components/TopRightTriangle.vue'
+import Logo from '../components/Logo.vue'
 
 const isBackgroundVisible = ref(false);
-const isCurtainVisible = ref(true)
+const areTriangesVisible = ref(false);
+const areCurtainsVisible = ref(false);
+const isLogoVisible = ref(true);
 const load = () => {
     isCurtainVisible.value = false
 }
-const bringToFront = () => {
-    isCurtainVisible.value = true
+const backgroundIntroDone = () => {
+    areTriangesVisible.value = true;
+    isLogoVisible.value = true;
 }
 const getNextPage = () => {
     // Logic to navigate to the next page
@@ -34,13 +38,13 @@ onMounted(() => {
 
 <template>
     <AnimatedGrid />
-    <button class="test" @click="toggleCurtains">Hi</button>
-    <Background :isVisible="isBackgroundVisible" :introDone="bringToFront">
-        <BottomLeftCurtain :isVisible="isCurtainVisible" :onClosed="load" :afterOpened="bringToFront" />
-        <BottomLeftTriangle :isVisible="true" :introDone="bringToFront" />
+    <Logo :isVisible="isLogoVisible" />
+    <Background :isVisible="isBackgroundVisible" :introDone="backgroundIntroDone">
+        <BottomLeftCurtain :isVisible="false" :onClosed="load" :afterOpened="bringToFront" />
+        <BottomLeftTriangle :isVisible="areTriangesVisible" :introDone="bringToFront" />
         <BottomLeftNavigation :isVisible="true" :onClick="getNextPage" />
-        <TopRightCurtain :isVisible="isCurtainVisible" />
-        <TopRightTriangle :isVisible="true" :introDone="bringToFront" />
+        <TopRightCurtain :isVisible="false" />
+        <TopRightTriangle :isVisible="areTriangesVisible" :introDone="bringToFront" />
     </Background>
 
 </template>

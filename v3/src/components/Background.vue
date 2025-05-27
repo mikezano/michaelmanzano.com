@@ -20,15 +20,24 @@ defineProps<{
 .background {
     position: relative;
 
+    margin: 0 auto;
+
 
     width: 40rem;
     height: 20rem;
-    transform: translateY(10rem);
+    /* transform: translateY(10rem); */
 
 
     background: linear-gradient(var(--neon-pink-alpha-70), var(--electric-blue-alpha-70));
     overflow: hidden;
-    box-shadow: 0 0 2rem var(--neon-pink-alpha-70);
+    /* box-shadow: 0 0 1rem var(--neon-pink-alpha-70); */
+
+    /* Multiple layered shadows for smoother effect */
+    box-shadow:
+        0 0 2rem 1rem var(--neon-pink-alpha-20),
+        /* Wider spread for outer glow */
+        0 0 1rem -0.2rem var(--neon-pink-alpha-50);
+    /* Negative spread for tighter inner glow */
 
     border-radius: 0.4rem;
 }
@@ -40,7 +49,7 @@ defineProps<{
 }
 
 .intro {
-    animation: intro 1s cubic-bezier(1, 0, 0, 1);
+    animation: intro 1s var(--motion);
 }
 
 @keyframes intro {
@@ -49,7 +58,7 @@ defineProps<{
         height: 1rem;
         width: 0;
         opacity: 0;
-        transform: translateY(19rem);
+        transform: translateY(0rem);
 
     }
 
@@ -57,18 +66,19 @@ defineProps<{
         height: 1rem;
         opacity: 1;
         width: 0;
-        transform: translateY(19rem);
+        transform: translateY(10rem);
     }
 
     50% {
         height: 1rem;
         width: 40rem;
-        transform: translateY(19rem);
+        transform: translateY(10rem);
     }
 
     100% {
         height: 20rem;
         width: 40rem;
+        transform: translateY(0);
 
     }
 }
