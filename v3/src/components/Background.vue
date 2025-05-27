@@ -28,7 +28,7 @@ defineProps<{
 
     background: linear-gradient(var(--neon-pink-alpha-70), var(--electric-blue-alpha-70));
     overflow: hidden;
-    box-shadow: 0 0 2rem var(--neon-pink-alpha-50);
+    box-shadow: 0 0 2rem var(--neon-pink-alpha-70);
 
     border-radius: 0.4rem;
 }

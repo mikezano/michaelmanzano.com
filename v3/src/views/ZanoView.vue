@@ -36,11 +36,11 @@ onMounted(() => {
     <AnimatedGrid />
     <button class="test" @click="toggleCurtains">Hi</button>
     <Background :isVisible="isBackgroundVisible" :introDone="bringToFront">
-        <BottomLeftCurtain :isVisible="false" :onClosed="load" :afterOpened="bringToFront" />
-        <BottomLeftTriangle :isVisible="false" :introDone="bringToFront" />
-        <BottomLeftNavigation :isVisible="false" :onClick="getNextPage" />
-        <TopRightCurtain :isVisible="false" />
-        <TopRightTriangle :isVisible="false" :introDone="bringToFront" />
+        <BottomLeftCurtain :isVisible="isCurtainVisible" :onClosed="load" :afterOpened="bringToFront" />
+        <BottomLeftTriangle :isVisible="true" :introDone="bringToFront" />
+        <BottomLeftNavigation :isVisible="true" :onClick="getNextPage" />
+        <TopRightCurtain :isVisible="isCurtainVisible" />
+        <TopRightTriangle :isVisible="true" :introDone="bringToFront" />
     </Background>
 
 </template>
