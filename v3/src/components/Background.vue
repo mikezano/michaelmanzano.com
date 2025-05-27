@@ -1,9 +1,16 @@
 <template>
-    <div class="background"></div>
+    <transition @after-enter="introDone" enter-active-class="intro">
+        <div class="background" v-if="isVisible">
+            <slot />
+        </div>
+    </transition>
 </template>
 
 <script setup lang="ts">
-
+defineProps<{
+    isVisible: boolean;
+    introDone: () => void;
+}>();
 
 </script>
 
@@ -11,13 +18,17 @@
 /* @import '../styles/colors.scss';  */
 
 .background {
-    position: relative;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: calc(50% - 20rem);
     width: 40rem;
     height: 20rem;
+    margin-top: 10rem;
 
-    background: linear-gradient(var(--neon-pink), var(--electric-blue));
+    background: linear-gradient(var(--neon-pink-alpha-70), var(--electric-blue-alpha-70));
     overflow: hidden;
-    box-shadow: 0 0 2rem var(--neon-pink);
+    box-shadow: 0 0 2rem var(--neon-pink-alpha-70);
 
     border-radius: 0.4rem;
 }
@@ -29,7 +40,7 @@
 }
 
 .intro {
-    animation: intro 0.5s linear;
+    animation: intro .5s linear;
 }
 
 @keyframes intro {

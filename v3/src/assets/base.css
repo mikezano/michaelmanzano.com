@@ -48,6 +48,14 @@
     /* Dark variants */
     --neon-pink-dark: hsla(315, 100%, 40%, 1);
     --electric-blue-dark: hsla(240, 100%, 40%, 1);
+
+    /* Alpha variants */
+    --neon-pink-alpha-20: hsla(315, 100%, 60%, 0.2);
+    --neon-pink-alpha-50: hsla(315, 100%, 60%, 0.5);
+    --neon-pink-alpha-70: hsla(315, 100%, 60%, 0.7);
+    --electric-blue-alpha-20: hsla(240, 100%, 60%, 0.2);
+    --electric-blue-alpha-50: hsla(240, 100%, 60%, 0.5);
+    --electric-blue-alpha-70: hsla(240, 100%, 60%, 0.7);
   }
 
 

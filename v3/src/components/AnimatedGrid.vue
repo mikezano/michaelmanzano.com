@@ -29,7 +29,7 @@
     margin-top: 20rem;
     border-top: 0.3rem solid var(--electric-blue);
     width: 100vw;
-    height: calc(100vh - 10rem);
+    height: calc(100vh - 20rem);
     transform-origin: 0 0;
     transform-style: preserve-3d;
     transform: rotateX(90deg);
