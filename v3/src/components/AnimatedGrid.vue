@@ -1,24 +1,10 @@
 <template>
-    <!-- <div id="app-background-container">
-        <div id="app-background"></div>
-    </div> -->
     <div id="animated-grid-container">
         <div id="animated-grid"></div>
     </div>
-
 </template>
 
 <style>
-#app {
-    font-family: "Audiowide";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #0892d0;
-    background: linear-gradient(to bottom, black 100px, var(--electric-blue-light));
-}
-
-
-
 #animated-grid-container {
     position: absolute;
     perspective: 1000px;

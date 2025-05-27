@@ -1,7 +1,9 @@
 @import './base.css';
 
 #app {
-
+    font-family: "Audiowide";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   display:grid;
   place-content: center;
 }
