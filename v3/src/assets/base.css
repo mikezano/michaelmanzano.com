@@ -57,6 +57,7 @@
     --electric-blue-alpha-50: hsla(240, 100%, 60%, 0.5);
     --electric-blue-alpha-70: hsla(240, 100%, 60%, 0.7);
 
+    --duration: 0.5s;
     --motion: cubic-bezier(1, 0, 0, 1);
   }
 

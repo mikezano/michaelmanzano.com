@@ -24,7 +24,7 @@ defineProps<{
 }
 
 .leave {
-    animation: leave 0.5s ease-in-out;
+    animation: leave var(--duration) var(--motion);
 }
 
 @keyframes leave {
@@ -38,7 +38,7 @@ defineProps<{
 }
 
 .enter {
-    animation: enter 0.5s ease-in-out;
+    animation: enter var(--duration) var(--motion);
 }
 
 @keyframes enter {

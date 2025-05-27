@@ -8,7 +8,6 @@
 <script setup lang="ts">
 defineProps<{
     isVisible: boolean;
-    introDone: () => void;
 }>();
 
 </script>
@@ -34,7 +33,7 @@ defineProps<{
 }
 
 .enter {
-    animation: enter 0.5s var(--motion);
+    animation: enter var(--duration) var(--motion);
 }
 
 @keyframes enter {

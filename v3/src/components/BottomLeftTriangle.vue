@@ -1,5 +1,5 @@
 <template>
-    <transition @after-enter="introDone" enter-active-class="enter">
+    <transition @after-enter="afterEnter" enter-active-class="enter">
         <div class="blt" v-if="isVisible"></div>
     </transition>
 </template>
@@ -8,7 +8,7 @@
 
 defineProps<{
     isVisible: boolean;
-    introDone: () => void;
+    afterEnter: () => void;
 }>();
 
 </script>
@@ -33,7 +33,7 @@ defineProps<{
 }
 
 .enter {
-    animation: enter 0.5s var(--motion);
+    animation: enter var(--duration) var(--motion);
 }
 
 @keyframes enter {

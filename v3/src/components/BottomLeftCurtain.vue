@@ -1,15 +1,15 @@
 <template>
-    <transition leave-active-class="leave" enter-active-class="enter" @after-enter="onClosed"
-        @after-leave="afterOpened">
+    <transition leave-active-class="leave" enter-active-class="enter" @after-enter="afterEnter"
+        @after-leave="afterLeave">
         <div class="blc" v-if="isVisible"></div>
     </transition>
 </template>
 
 <script setup lang="ts">
 defineProps<{
-    isVisible: boolean
-    onClosed: () => void
-    afterOpened: () => void
+    isVisible: boolean;
+    afterEnter: () => void;
+    afterLeave: () => void;
 }>()
 
 </script>
@@ -28,7 +28,7 @@ defineProps<{
 }
 
 .leave {
-    animation: leave 0.5s ease-in-out;
+    animation: leave var(--duration) var(--motion);
 }
 
 @keyframes leave {
@@ -42,7 +42,7 @@ defineProps<{
 }
 
 .enter {
-    animation: enter 0.5s ease-in-out;
+    animation: enter var(--duration) var(--motion);
 }
 
 @keyframes enter {

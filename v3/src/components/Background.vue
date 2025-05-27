@@ -1,5 +1,5 @@
 <template>
-    <transition @after-enter="introDone" enter-active-class="intro">
+    <transition @after-enter="afterEnter" enter-active-class="intro">
         <div class="background" v-if="isVisible">
             <slot />
         </div>
@@ -9,7 +9,7 @@
 <script setup lang="ts">
 defineProps<{
     isVisible: boolean;
-    introDone: () => void;
+    afterEnter: () => void;
 }>();
 
 </script>

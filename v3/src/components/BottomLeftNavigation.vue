@@ -1,5 +1,5 @@
 <template>
-    <transition leave-active-class="leave" enter-active-class="enter">
+    <transition enter-active-class="enter" @after-enter="afterEnter" leave-active-class="leave">
         <div class="bln" v-if="isVisible">
             <div class="bln__triangle"></div>
             <p class="bln__find-me" @click="navigate('FindMe')">Find Me</p>
@@ -10,15 +10,15 @@
 </template>
 
 <script setup lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
 
-defineProps<{
+const props = defineProps<{
     isVisible: boolean;
+    afterEnter: () => void;
     onClick: (page: string) => void;
 }>();
 
 const navigate = (page: string) => {
-    this.onClick(page);
+    props.onClick(page);
 };
 </script>
 
@@ -29,8 +29,6 @@ const navigate = (page: string) => {
     }
 }
 
-
-
 .bln {
     --bln-size: 16rem;
     position: absolute;
@@ -40,7 +38,7 @@ const navigate = (page: string) => {
     height: var(--bln-size);
     text-align: left;
     color: white;
-    margin-top: 2rem;
+    margin-top: 1rem;
     shape-outside: polygon(0 0, 100% 100%, 0 100%);
     /* //background: linear-gradient(45deg, $blueD2, $blueL1);
     //clip-path: polygon(0 0, 32% 0, 100% 100%, 0 100%);
@@ -63,23 +61,26 @@ const navigate = (page: string) => {
     & .bln__find-me,
     & .bln__etc {
         text-align: right;
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         /* //position: relative;
         //width: auto; */
         transition: all 0.2s ease-in-out;
 
-        &:hover {
-            color: var(--electric-blue-light);
-            cursor: pointer;
-            transform: translateY(-0.1rem);
-            text-shadow: 0.2rem 0.2rem 0.2rem var(--neon-pink);
-        }
 
+
+    }
+
+    & .bln__find-me:hover,
+    & .bln__etc:hover {
+        color: var(--electric-blue-dark);
+        cursor: pointer;
+        transform: translateY(-0.1rem);
+        text-shadow: 0.2rem 0.2rem 0.2rem var(--neon-pink);
     }
 }
 
 .leave {
-    animation: leave 0.5s ease-in-out;
+    animation: leave var(--duration) var(--motion);
 }
 
 @keyframes leave {
@@ -93,8 +94,7 @@ const navigate = (page: string) => {
 }
 
 .enter {
-    animation: enter 0.5s ease-in-out;
-    ;
+    animation: enter var(--duration) var(--motion);
 }
 
 @keyframes enter {

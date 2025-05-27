@@ -1,57 +1,122 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import Background from '../components/Background.vue'
+import FindMe from '@/components/FindMe.vue'
+import { onMounted, ref } from 'vue'
 import AnimatedGrid from '../components/AnimatedGrid.vue'
+import Background from '../components/Background.vue'
 import BottomLeftCurtain from '../components/BottomLeftCurtain.vue'
-import TopRightCurtain from '../components/TopRightCurtain.vue'
 import BottomLeftNavigation from '../components/BottomLeftNavigation.vue'
 import BottomLeftTriangle from '../components/BottomLeftTriangle.vue'
-import TopRightTriangle from '../components/TopRightTriangle.vue'
 import Logo from '../components/Logo.vue'
+import TopRightCurtain from '../components/TopRightCurtain.vue'
+import TopRightTriangle from '../components/TopRightTriangle.vue'
 
 const isBackgroundVisible = ref(false);
-const areTriangesVisible = ref(false);
-const areCurtainsVisible = ref(false);
 const isLogoVisible = ref(true);
-const load = () => {
-    isCurtainVisible.value = false
-}
-const backgroundIntroDone = () => {
-    areTriangesVisible.value = true;
-    isLogoVisible.value = true;
-}
-const getNextPage = () => {
-    // Logic to navigate to the next page
-    console.log('Navigating to the next page...')
-}
-
-const toggleCurtains = () => {
-    console.log('Toggling curtains...');
-    isCurtainVisible.value = !isCurtainVisible.value
-}
+const areTriangesVisible = ref(false);
+const isNavigationVisible = ref(false);
+const areCurtainsVisible = ref(false);
 
 onMounted(() => {
     isBackgroundVisible.value = true;
-    //bringToFront();
+
 });
+const handleBackgroundAfterEnter = () => {
+    areTriangesVisible.value = true;
+    isLogoVisible.value = true;
+}
+const handleTriangleAfterEnter = () => {
+    isNavigationVisible.value = true;
+}
+const handleNavigationAfterEnter = () => {
+    areCurtainsVisible.value = true;
+}
+// a.k.a Curtains are 'closed'
+const handleCurtainAfterEnter = () => {
+    areCurtainsVisible.value = false;
+}
+// a.k.a Curtains are 'opened'
+const handleCurtainAfterLeave = () => {
+
+}
+const getNextPage = () => {
+    areCurtainsVisible.value = true;
+}
+
+
+
 </script>
 
 <template>
     <AnimatedGrid />
     <Logo :isVisible="isLogoVisible" />
-    <Background :isVisible="isBackgroundVisible" :introDone="backgroundIntroDone">
-        <BottomLeftCurtain :isVisible="false" :onClosed="load" :afterOpened="bringToFront" />
-        <BottomLeftTriangle :isVisible="areTriangesVisible" :introDone="bringToFront" />
-        <BottomLeftNavigation :isVisible="true" :onClick="getNextPage" />
-        <TopRightCurtain :isVisible="false" />
-        <TopRightTriangle :isVisible="areTriangesVisible" :introDone="bringToFront" />
+    <Background :isVisible="isBackgroundVisible" :afterEnter="handleBackgroundAfterEnter">
+        <div class="fake-blt"></div>
+        <div class="fake-trt"></div>
+        <FindMe :isVisible="true" :isInFront="true" />
+        <BottomLeftCurtain :isVisible="areCurtainsVisible" :afterEnter="handleCurtainAfterEnter"
+            :afterLeave="handleCurtainAfterLeave" />
+        <BottomLeftTriangle :isVisible="areTriangesVisible" :afterEnter="handleTriangleAfterEnter" />
+        <BottomLeftNavigation :isVisible="isNavigationVisible" :afterEnter="handleNavigationAfterEnter"
+            :onClick="getNextPage" />
+        <TopRightCurtain :isVisible="areCurtainsVisible" />
+        <TopRightTriangle :isVisible="areTriangesVisible" />
     </Background>
 
 </template>
 
 <style scoped>
-.test {
-    margin-top: 2rem;
-    position: absolute;
+.fake-blt,
+.fake-trt {
+    --size: 20rem;
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    background-color: none;
+}
+
+.fake-blt {
+    float: left;
+    bottom: 0;
+    left: 0;
+    shape-outside: polygon(0 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+
+}
+
+.fake-trt {
+    float: right;
+    top: 0;
+    right: 0;
+    shape-outside: polygon(0 0, 100% 100%, 100% 0);
+    clip-path: polygon(0 0, 100% 100%, 100% 0);
+}
+
+/* Example of letter spreading */
+.spread-text {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: var(--neon-pink);
+    margin: 1rem 0;
+}
+
+/* Split each letter into its own element for grid */
+.spread-text>span {
+    display: inline-block;
+}
+
+@media screen and (max-width: 600px) {
+
+    .fake-blt,
+    .fake-trt {
+        display: none;
+    }
+
+    .zano {
+        margin-top: -6rem;
+    }
 }
 </style>
