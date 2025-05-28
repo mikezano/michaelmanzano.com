@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
@@ -14,6 +13,10 @@ import HelloWorld from './components/HelloWorld.vue'
   line-height: 1.5;
   max-height: 100vh;
 } */
+
+#app {
+  background-color: orange;
+}
 
 .logo {
   display: block;

@@ -21,21 +21,21 @@
     transform: rotateX(90deg);
     background: linear-gradient(90deg,
             transparent 0%,
-            var(--electric-blue-alpha-50) 4%,
+            var(--electric-blue-dark) 4%,
             var(--electric-blue-light) 5%,
-            var(--electric-blue-alpha-50) 6%,
+            var(--electric-blue-dark) 6%,
             transparent 10%),
         linear-gradient(180deg,
             transparent 0%,
-            var(--electric-blue-alpha-50) 4%,
+            var(--electric-blue-dark) 4%,
             var(--electric-blue-light) 5%,
-            var(--electric-blue-alpha-50) 6%,
+            var(--electric-blue-dark) 6%,
             transparent 10%),
         black;
     background-repeat: repeat, repeat;
     background-position: 0 0, 50px 50px;
     background-size: 50px 50px, 50px 50px;
-    /* animation: move 20s linear infinite; */
+    animation: move 25s linear infinite;
 }
 
 @keyframes move {

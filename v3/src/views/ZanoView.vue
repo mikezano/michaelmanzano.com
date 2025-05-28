@@ -12,7 +12,7 @@ import TopRightCurtain from '../components/TopRightCurtain.vue'
 import TopRightTriangle from '../components/TopRightTriangle.vue'
 
 const isBackgroundVisible = ref(false);
-const isLogoVisible = ref(true);
+const isLogoVisible = ref(false);
 const areTriangesVisible = ref(false);
 const isNavigationVisible = ref(false);
 const areCurtainsVisible = ref(false);

@@ -15,8 +15,6 @@ defineProps<{
 </script>
 
 <style>
-/* @import '../styles/colors.scss';  */
-
 .background {
     position: relative;
 

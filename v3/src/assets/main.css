@@ -4,16 +4,14 @@
     font-family: "Audiowide";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  display:grid;
-  place-content: center;
-}
+    text-rendering: optimizeLegibility;
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+  display:flex;
+  flex-direction:column;
+  align-items: center;;
+  background:linear-gradient(to bottom, black, var(--electric-blue-dark) 22rem, var(--neon-pink-dark) 28rem);
+  height:100vh;
+  width:100vw;
 }
 
 @media (hover: hover) {
