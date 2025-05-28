@@ -19,8 +19,13 @@ defineProps<{
 <style scoped>
 .about {
     color: white;
-    margin-top: 1.5rem;
-    font-size: 1.1rem;
+    margin-top: 1.2rem;
+    font-size: 1rem;
+
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 .highlight-zano {

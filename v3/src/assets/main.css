@@ -1,7 +1,10 @@
 @import './base.css';
 
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap');
+
 #app {
-    font-family: "Audiowide";
+    font-family: "Orbitron";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;

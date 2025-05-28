@@ -39,23 +39,23 @@
 :root {
     /* Base colors */
     --neon-pink: hsla(315, 100%, 60%, 1);
-    --electric-blue: hsla(240, 100%, 60%, 1);
+    --electric-blue: hsla(206, 100%, 60%, 1);
   
     /* Light variants */
     --neon-pink-light: hsla(315, 100%, 75%, 1);
-    --electric-blue-light: hsla(240, 100%, 75%, 1);
+    --electric-blue-light: hsla(206, 100%, 75%, 1);
   
     /* Dark variants */
     --neon-pink-dark: hsla(315, 100%, 40%, 1);
-    --electric-blue-dark: hsla(240, 100%, 40%, 1);
+    --electric-blue-dark: hsla(206, 100%, 40%, 1);
 
     /* Alpha variants */
     --neon-pink-alpha-20: hsla(315, 100%, 60%, 0.2);
     --neon-pink-alpha-50: hsla(315, 100%, 60%, 0.5);
     --neon-pink-alpha-70: hsla(315, 100%, 60%, 0.7);
-    --electric-blue-alpha-20: hsla(240, 100%, 60%, 0.2);
-    --electric-blue-alpha-50: hsla(240, 100%, 60%, 0.5);
-    --electric-blue-alpha-70: hsla(240, 100%, 60%, 0.7);
+    --electric-blue-alpha-20: hsla(206, 100%, 60%, 0.2);
+    --electric-blue-alpha-50: hsla(206, 100%, 60%, 0.5);
+    --electric-blue-alpha-70: hsla(206, 100%, 60%, 0.7);
 
     --duration: 0.5s;
     --motion: cubic-bezier(1, 0, 0, 1);
@@ -83,6 +83,7 @@
   margin: 0;
   font-weight: normal;
 }
+
 
 body {
   min-height: 100vh;

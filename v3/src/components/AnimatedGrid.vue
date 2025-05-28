@@ -35,7 +35,7 @@
     background-repeat: repeat, repeat;
     background-position: 0 0, 50px 50px;
     background-size: 50px 50px, 50px 50px;
-    animation: move 25s linear infinite;
+    animation: move 100s linear infinite;
 }
 
 @keyframes move {

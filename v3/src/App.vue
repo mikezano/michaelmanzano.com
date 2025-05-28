@@ -7,13 +7,6 @@ import { RouterView } from 'vue-router';
 </template>
 
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=Audiowide);
-
-/* header {
-  line-height: 1.5;
-  max-height: 100vh;
-} */
-
 #app {
   background-color: orange;
 }

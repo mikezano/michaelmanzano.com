@@ -85,7 +85,7 @@ const links = ref<Link[]>([
         gap: .4rem;
         font-size: 1.2rem;
         width: 10rem;
-        height: 3rem;
+        margin-left: 3rem;
     }
 
     & .link.in-front {
@@ -105,7 +105,7 @@ const links = ref<Link[]>([
     & .link::before {
         content: '';
         position: absolute;
-        padding-bottom: 1rem;
+        padding-bottom: 2.2rem;
         height: 2rem;
         width: 0;
         border-bottom: 0.3rem solid white;

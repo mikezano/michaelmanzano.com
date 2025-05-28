@@ -18,7 +18,7 @@ defineProps<{
     width: 75%;
     height: 100%;
     background-color: green;
-    background: linear-gradient(45deg, var(--electric-blue), var(--electric-blue-light));
+    background: linear-gradient(45deg, var(--electric-blue), var(--electric-blue-dark));
     /* shape-outside: polygon(0 0, 100% 100%, 0 100%); */
     clip-path: polygon(0 0, 100% 0, 100% 100%, 69% 100%);
 }

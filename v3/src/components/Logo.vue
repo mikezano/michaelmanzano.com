@@ -14,12 +14,11 @@ defineProps<{
 .logo {
     color: white;
     text-align: center;
-    font-family: 'Audiowide';
     font-size: 5rem;
     animation: glow 3s ease-in infinite;
     opacity: 0;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.5px var(--neon-pink-light);
+    -webkit-text-stroke: 0.5px var(--electric-blue-light);
     /* //-webkit-background-clip: text; */
     /* transform: translateY(10rem); */
     transition: opacity var(--duration) var(--motion);
