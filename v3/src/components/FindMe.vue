@@ -73,7 +73,7 @@ const links = ref<Link[]>([
 <style scoped>
 .in-front {
     position: relative;
-    z-index: 1;
+
 }
 
 .find-me {

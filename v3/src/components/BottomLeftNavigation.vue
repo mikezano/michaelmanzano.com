@@ -3,7 +3,7 @@
         <div class="bln" v-if="isVisible">
             <div class="bln__triangle"></div>
             <p class="bln__find-me" @click="navigate('FindMe')">Find Me</p>
-            <p class="bln__etc" @click="navigate('Etc')">Etc</p>
+            <p class="bln__etc" @click="navigate('About')">Etc</p>
         </div>
 
     </transition>

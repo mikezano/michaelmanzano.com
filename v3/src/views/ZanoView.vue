@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import About from '@/components/About.vue'
 import FindMe from '@/components/FindMe.vue'
 import { onMounted, ref } from 'vue'
 import AnimatedGrid from '../components/AnimatedGrid.vue'
@@ -15,6 +16,9 @@ const isLogoVisible = ref(true);
 const areTriangesVisible = ref(false);
 const isNavigationVisible = ref(false);
 const areCurtainsVisible = ref(false);
+const isFindMeVisible = ref(false);
+const isAboutVisible = ref(false);
+const nextPage = ref('FindMe');
 
 onMounted(() => {
     isBackgroundVisible.value = true;
@@ -32,16 +36,32 @@ const handleNavigationAfterEnter = () => {
 }
 // a.k.a Curtains are 'closed'
 const handleCurtainAfterEnter = () => {
+    loadNextPage();
     areCurtainsVisible.value = false;
 }
 // a.k.a Curtains are 'opened'
 const handleCurtainAfterLeave = () => {
 
 }
-const getNextPage = () => {
+
+const setNextPage = (page: string) => {
+    nextPage.value = page;
     areCurtainsVisible.value = true;
 }
 
+const loadNextPage = () => {
+    isFindMeVisible.value = false;
+    isAboutVisible.value = false;
+
+    switch (nextPage.value) {
+        case 'FindMe':
+            isFindMeVisible.value = true;
+            break;
+        case 'About':
+            isAboutVisible.value = true;
+            break;
+    }
+}
 
 
 </script>
@@ -52,12 +72,13 @@ const getNextPage = () => {
     <Background :isVisible="isBackgroundVisible" :afterEnter="handleBackgroundAfterEnter">
         <div class="fake-blt"></div>
         <div class="fake-trt"></div>
-        <FindMe :isVisible="true" :isInFront="true" />
+        <FindMe :isVisible="isFindMeVisible" :isInFront="true" />
+        <About :isVisible="isAboutVisible" />
         <BottomLeftCurtain :isVisible="areCurtainsVisible" :afterEnter="handleCurtainAfterEnter"
             :afterLeave="handleCurtainAfterLeave" />
         <BottomLeftTriangle :isVisible="areTriangesVisible" :afterEnter="handleTriangleAfterEnter" />
         <BottomLeftNavigation :isVisible="isNavigationVisible" :afterEnter="handleNavigationAfterEnter"
-            :onClick="getNextPage" />
+            :onClick="setNextPage" />
         <TopRightCurtain :isVisible="areCurtainsVisible" />
         <TopRightTriangle :isVisible="areTriangesVisible" />
     </Background>
