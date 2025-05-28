@@ -1,8 +1,8 @@
 <template>
     <div class="find-me" v-if="isVisible">
-        <div class="fine-me__title">Find me here:</div>
-        <div class="find-me__links"> <a class="find-me__item" v-for="link in links" :href="link.url"
-                :class="{ 'in-front': isInFront }">
+        <div class="title">Find me here:</div>
+        <div class="links">
+            <a class="link" target="_blank" v-for="link in links" :href="link.url" :class="{ 'in-front': isInFront }">
                 <img v-if="link.icon" :src="link.icon" :alt="link.name" />
                 <span>{{ link.name }}</span>
             </a>
@@ -71,72 +71,54 @@ const links = ref<Link[]>([
 </script>
 
 <style scoped>
-.in-front {
-    position: relative;
-
-}
-
 .find-me {
 
-    & .find-me__title,
-    & .find-me__item {
-        text-align: center;
+    & .title {
+        color: white;
     }
 
-    & .find-me__links {
-        margin-top: 1rem;
-    }
-
-    & .find-me__title {
-        font-size: 2rem;
-        color: black;
-    }
-
-    & .find-me__item {
+    & .link {
         color: white;
         display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        font-size: 1.2rem;
+        width: 10rem;
+        height: 3rem;
+    }
+
+    & .link.in-front {
         position: relative;
-        text-decoration: none;
-        margin-bottom: 1rem;
-        margin-left: 2rem;
-
-        & img {
-            width: 2rem;
-            height: 2rem;
-        }
-
-
+        z-index: 10;
     }
 
-    & .find-me__item span {
-        font-size: 1.5rem;
-        height: 1rem;
-        width: auto;
-        margin-left: 0.5rem;
-    }
-
-    & .find-me__item:hover {
+    & .link:hover {
         background: none;
     }
 
-    & .find-me__item:hover::before {
-        transition: all 0.2s ease-in-out;
-        border-bottom: 0.3rem solid var(--neon-pink);
-        width: 100%;
+    & .link img {
+        width: 2rem;
+        height: 2rem;
     }
 
-    & .find-me__item::before {
+    & .link::before {
         content: '';
         position: absolute;
-        padding-bottom: 0.2rem;
+        padding-bottom: 1rem;
         height: 2rem;
         width: 0;
         border-bottom: 0.3rem solid white;
     }
+
+    & .link:hover::before {
+        transition: all 0.2s ease-in-out;
+        border-bottom: 0.2rem solid var(--neon-pink);
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 600px) {
-    .find-me__title {
+    .find-me .title {
         display: none;
     }
 

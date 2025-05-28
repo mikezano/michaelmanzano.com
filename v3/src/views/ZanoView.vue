@@ -17,6 +17,7 @@ const areTriangesVisible = ref(false);
 const isNavigationVisible = ref(false);
 const areCurtainsVisible = ref(false);
 const isFindMeVisible = ref(false);
+const isInFront = ref(false);
 const isAboutVisible = ref(false);
 const nextPage = ref('FindMe');
 
@@ -41,17 +42,20 @@ const handleCurtainAfterEnter = () => {
 }
 // a.k.a Curtains are 'opened'
 const handleCurtainAfterLeave = () => {
-
+    if (nextPage.value === 'FindMe')
+        isInFront.value = true;
 }
 
 const setNextPage = (page: string) => {
     nextPage.value = page;
+    isInFront.value = false;
     areCurtainsVisible.value = true;
 }
 
 const loadNextPage = () => {
     isFindMeVisible.value = false;
     isAboutVisible.value = false;
+
 
     switch (nextPage.value) {
         case 'FindMe':
@@ -72,7 +76,7 @@ const loadNextPage = () => {
     <Background :isVisible="isBackgroundVisible" :afterEnter="handleBackgroundAfterEnter">
         <div class="fake-blt"></div>
         <div class="fake-trt"></div>
-        <FindMe :isVisible="isFindMeVisible" :isInFront="true" />
+        <FindMe :isVisible="isFindMeVisible" :isInFront="isInFront" />
         <About :isVisible="isAboutVisible" />
         <BottomLeftCurtain :isVisible="areCurtainsVisible" :afterEnter="handleCurtainAfterEnter"
             :afterLeave="handleCurtainAfterLeave" />

@@ -3,7 +3,7 @@
         <div class="bln" v-if="isVisible">
             <div class="bln__triangle"></div>
             <p class="bln__find-me" @click="navigate('FindMe')">Find Me</p>
-            <p class="bln__etc" @click="navigate('About')">Etc</p>
+            <p class="bln__etc" @click="navigate('About')">About</p>
         </div>
 
     </transition>
@@ -38,7 +38,6 @@ const navigate = (page: string) => {
     height: var(--bln-size);
     text-align: left;
     color: white;
-    margin-top: 1rem;
     shape-outside: polygon(0 0, 100% 100%, 0 100%);
     /* //background: linear-gradient(45deg, $blueD2, $blueL1);
     //clip-path: polygon(0 0, 32% 0, 100% 100%, 0 100%);
@@ -55,7 +54,8 @@ const navigate = (page: string) => {
     }
 
     & .bln__find-me {
-        padding-top: 6rem;
+        margin-top: 7rem;
+        margin-bottom: 1rem;
     }
 
     & .bln__find-me,
@@ -65,7 +65,6 @@ const navigate = (page: string) => {
         /* //position: relative;
         //width: auto; */
         transition: all 0.2s ease-in-out;
-
 
 
     }
