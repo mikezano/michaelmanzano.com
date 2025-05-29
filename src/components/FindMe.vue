@@ -73,7 +73,7 @@ const links = ref<Link[]>([
 .find-me {
 
     & .zano-highlight {
-        color: var(--electric-blue);
+        color: var(--electric-blue-light);
     }
 
     & .title {
