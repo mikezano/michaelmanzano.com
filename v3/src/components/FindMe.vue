@@ -80,6 +80,7 @@ const links = ref<Link[]>([
         color: white;
         margin-top: 0.4rem;
         font-size: 0.9rem;
+        letter-spacing: 0.009rem;
     }
 
     & .links {

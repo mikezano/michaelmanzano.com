@@ -12,6 +12,7 @@ defineProps<{
 
 <style scoped>
 .logo {
+    margin-top: 4rem;
     color: white;
     text-align: center;
     font-size: 5rem;

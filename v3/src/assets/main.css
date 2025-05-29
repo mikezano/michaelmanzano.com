@@ -12,7 +12,11 @@
   display:flex;
   flex-direction:column;
   align-items: center;;
-  background:linear-gradient(to bottom, black, var(--electric-blue-dark) 22rem, var(--neon-pink-dark) 28rem);
+  background:
+    radial-gradient(circle, var(--neon-pink-dark), var(--neon-pink-light) 10%, transparent 40%),
+  linear-gradient(to bottom, black, var(--electric-blue-dark) 22rem, var(--neon-pink-dark) 28rem);
+  background-position: 0 -200px, 0 0;
+
   height:100vh;
   width:100vw;
 }
