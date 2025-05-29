@@ -1,124 +1,107 @@
-<template lang="pug">
-transition(
-	leave-active-class='leave'
-	enter-active-class='enter'
-)
-	.bln(v-if='isVisible')
-		.bln__triangle
-		p.bln__find-me(@click="navigate('FindMe')") Find Me
-		p.bln__etc(@click="navigate('Etc')") Etc
-
+<template>
+    <transition enter-active-class="enter" @after-enter="afterEnter" leave-active-class="leave">
+        <div class="bln" v-if="isVisible">
+            <div class="bln__triangle"></div>
+            <p class="bln__find-me" @click="navigate('FindMe')">Find Me</p>
+            <p class="bln__etc" @click="navigate('About')">About</p>
+        </div>
+    </transition>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+<script setup lang="ts">
 
-@Component
-export default class BottomLeftNavigation extends Vue {
-	@Prop()
-	public isVisible!: boolean;
-	@Prop()
-	public onClick!: (page: string) => void;
+const props = defineProps<{
+    isVisible: boolean;
+    afterEnter: () => void;
+    onClick: (page: string) => void;
+}>();
 
-	public navigate(page: string): void {
-		this.onClick(page);
-	}
-}
+const navigate = (page: string) => {
+    props.onClick(page);
+};
 </script>
 
-<style lang="scss" scoped>
-@import "../styles/colors.scss";
-
+<style scoped>
 @media screen and (max-width: 600px) {
-	.bln {
-		display: none;
-	}
+    .bln {
+        display: none;
+    }
 }
 
-$size: 16rem;
 .bln {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: $size;
-	height: $size;
-	text-align: left;
-	color: white;
-	margin-top: 2rem;
-	shape-outside: polygon(0 0, 100% 100%, 0 100%);
-	//background: linear-gradient(45deg, $blueD2, $blueL1);
-	//clip-path: polygon(0 0, 32% 0, 100% 100%, 0 100%);
-	//shape-outside: polygon(0 0, 100% 100%, 0 100%);
-	//clip-path: polygon(0 0, 100% 100%, 0 100%);
+    --bln-size: 16rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: var(--bln-size);
+    height: var(--bln-size);
+    text-align: left;
+    color: white;
+    shape-outside: polygon(0 0, 100% 100%, 0 100%);
+    /* //background: linear-gradient(45deg, $blueD2, $blueL1);
+    //clip-path: polygon(0 0, 32% 0, 100% 100%, 0 100%);
+    //shape-outside: polygon(0 0, 100% 100%, 0 100%);
+    //clip-path: polygon(0 0, 100% 100%, 0 100%); */
 
-	&__triangle {
-		//background: linear-gradient(black, white);
-		shape-outside: polygon(0 0, 100% 0, 100% 100%);
-		//clip-path: polygon(0 0, 100% 0, 100% 100%);
-		width: $size;
-		height: $size;
-		float: right;
-	}
+    & .bln__triangle {
+        /* //background: linear-gradient(black, white); */
+        shape-outside: polygon(0 0, 100% 0, 100% 100%);
+        /* //clip-path: polygon(0 0, 100% 0, 100% 100%); */
+        width: var(--bln-size);
+        height: var(--bln-size);
+        float: right;
+    }
 
-	&__find-me {
-		padding-top: 6rem;
-	}
+    & .bln__find-me {
+        margin-top: 7rem;
+        margin-bottom: 1rem;
+    }
 
-	&__find-me,
-	&__etc {
-		text-align: right;
-		font-size: 1.4rem;
-		//position: relative;
-		//width: auto;
-		transition: all 0.2s ease-in-out;
+    & .bln__find-me,
+    & .bln__etc {
+        text-align: right;
+        font-size: 1.3rem;
+        /* //position: relative;
+        //width: auto; */
+        transition: all 0.2s ease-in-out;
 
-		&:hover {
-			color: $blueD2;
-			cursor: pointer;
-			transform: translateY(-0.1rem);
-			text-shadow: 0.2rem 0.2rem 0.2rem $pink;
-		}
 
-		// &:hover::before {
-		// 	transition: all 0.2s ease-in-out;
-		// 	border-bottom: 0.3rem solid $pinkL1;
-		// 	width: 100%;
-		// }
+    }
 
-		// &::before {
-		// 	content: '';
-		// 	position: absolute;
-		// 	padding-bottom: 0.2rem;
-		// 	height: 2rem;
-		// 	width: 0;
-		// 	border-bottom: 0.3rem solid white;
-		// }
-	}
+    & .bln__find-me:hover,
+    & .bln__etc:hover {
+        color: var(--electric-blue-dark);
+        cursor: pointer;
+        transform: translateY(-0.1rem);
+        text-shadow: 0.2rem 0.2rem 0.2rem var(--neon-pink);
+    }
 }
 
 .leave {
-	animation: leave $duration $motion;
+    animation: leave var(--duration) var(--motion);
 }
 
 @keyframes leave {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(-20rem);
-	}
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-20rem);
+    }
 }
 
 .enter {
-	animation: enter 0.5s $motion;
+    animation: enter var(--duration) var(--motion);
 }
 
 @keyframes enter {
-	0% {
-		transform: translateX(-20rem);
-	}
-	100% {
-		transform: translateX(0);
-	}
+    0% {
+        transform: translateX(-20rem);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 </style>

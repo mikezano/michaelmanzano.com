@@ -1,64 +1,57 @@
-<template lang="pug">
-transition(
-	leave-active-class='leave'
-	enter-active-class='enter'
-	@after-enter='onClosed'
-	@after-leave='afterOpened'
-)
-	.blc(v-if='isVisible')
+<template>
+    <transition leave-active-class="leave" enter-active-class="enter" @after-enter="afterEnter"
+        @after-leave="afterLeave">
+        <div class="blc" v-if="isVisible"></div>
+    </transition>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+<script setup lang="ts">
+defineProps<{
+    isVisible: boolean;
+    afterEnter: () => void;
+    afterLeave: () => void;
+}>()
 
-@Component
-export default class BottomLeftCurtain extends Vue {
-	@Prop()
-	public isVisible!: boolean;
-	@Prop()
-	public onClosed!: () => void;
-	@Prop()
-	public afterOpened!: () => void;
-}
 </script>
 
-<style lang="scss" scoped>
-@import '../styles/colors.scss';
+<style scoped>
 .blc {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 75%;
-	height: 100%;
-	background-color: orange;
-	//shape-outside: polygon(0 0, 100% 100%, 0 100%);
-	background: linear-gradient(45deg, $blueD2, $blueL1);
-	clip-path: polygon(0 0, 32% 0, 100% 100%, 0 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 75%;
+    height: 100%;
+    background-color: orange;
+    /* //shape-outside: polygon(0 0, 100% 100%, 0 100%); */
+    background: linear-gradient(45deg, var(--electric-blue), var(--electric-blue-dark));
+    clip-path: polygon(0 0, 32% 0, 100% 100%, 0 100%);
 }
 
 .leave {
-	animation: leave $duration $motion;
+    animation: leave var(--duration) var(--motion);
 }
 
 @keyframes leave {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(-20rem);
-	}
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-20rem);
+    }
 }
 
 .enter {
-	animation: enter 0.5s $motion;
+    animation: enter var(--duration) var(--motion);
 }
 
 @keyframes enter {
-	0% {
-		transform: translateX(-20rem);
-	}
-	100% {
-		transform: translateX(0);
-	}
+    0% {
+        transform: translateX(-20rem);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 </style>

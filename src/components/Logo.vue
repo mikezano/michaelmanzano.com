@@ -1,41 +1,45 @@
-<template lang="pug">
-.logo ZANO
+<template>
+    <div class="logo" :class="{ 'show': isVisible }">ZANO</div>
 </template>
 
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+<script setup lang="ts">
 
-@Component
-export default class Logo extends Vue {
-	@Prop()
-	public isVisible: boolean = false;
-}
+defineProps<{
+    isVisible: boolean;
+}>();
 </script>
 
-<style lang="scss" scoped>
-@import '../styles/colors';
-@import url(https://fonts.googleapis.com/css?family=Audiowide);
+<style scoped>
 .logo {
-	color: white;
-	font-family: 'Audiowide';
-	font-size: 5rem;
-	animation: glow 3s ease-in infinite;
+    margin-top: 4rem;
+    color: white;
+    text-align: center;
+    font-size: 5rem;
+    animation: glow 3s ease-in infinite;
+    opacity: 0;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.5px var(--electric-blue-light);
+    /* //-webkit-background-clip: text; */
+    /* transform: translateY(10rem); */
+    transition: opacity var(--duration) var(--motion);
+}
 
-	-webkit-text-fill-color: transparent;
-	-webkit-text-stroke: 0.5px #8fdcea;
-	//-webkit-background-clip: text;
+.logo.show {
+    opacity: 1;
 }
 
 @keyframes glow {
-	0% {
-		filter: drop-shadow(0 0 1rem white);
-	}
-	50% {
-		filter: drop-shadow(0 0 1.2rem white);
-	}
-	100% {
-		filter: drop-shadow(0 0 1rem white);
-	}
+    0% {
+        filter: drop-shadow(0 0 1rem var(--neon-pink-light));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 4rem white);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 1rem var(--neon-pink-light));
+    }
 }
 </style>

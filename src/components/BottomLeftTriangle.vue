@@ -1,53 +1,48 @@
-<template lang="pug">
-transition(
-	@after-enter='introDone'
-	enter-active-class='enter'
-)
-	.blt(v-if='isVisible')
+<template>
+    <transition @after-enter="afterEnter" enter-active-class="enter">
+        <div class="blt" v-if="isVisible"></div>
+    </transition>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+<script setup lang="ts">
 
-@Component
-export default class BottomLeftTriangle extends Vue {
-	@Prop()
-	public isVisible!: boolean;
-	@Prop()
-	public introDone!: () => void;
-}
+defineProps<{
+    isVisible: boolean;
+    afterEnter: () => void;
+}>();
+
 </script>
 
-<style lang="scss" scoped>
-@import "../styles/colors.scss";
-
+<style scoped>
 @media screen and (max-width: 600px) {
-	.blt {
-		display: none;
-	}
+    .blt {
+        display: none;
+    }
 }
-$size: 16rem;
+
 .blt {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: $size;
-	height: $size;
-	background: linear-gradient(45deg, $pink, white);
-	shape-outside: polygon(0 0, 100% 100%, 0 100%);
-	clip-path: polygon(0 0, 100% 100%, 0 100%);
+    --size: 16rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: var(--size);
+    height: var(--size);
+    background: linear-gradient(45deg, var(--neon-pink), white);
+    shape-outside: polygon(0 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
 }
 
 .enter {
-	animation: enter $duration $motion;
+    animation: enter var(--duration) var(--motion);
 }
 
 @keyframes enter {
-	0% {
-		transform: translateX(-30rem);
-	}
-	100% {
-		transform: translateX(0);
-	}
+    0% {
+        transform: translateX(-30rem);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 </style>

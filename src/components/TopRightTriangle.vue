@@ -1,53 +1,52 @@
-<template lang="pug">
-transition(
-	enter-active-class='enter'
-)
-	.trt(v-if='isVisible')
+<template>
+    <transition enter-active-class="enter">
+        <div class="trt" v-if="isVisible">
+            <slot />
+        </div>
+
+    </transition>
+
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+<script setup lang="ts">
+defineProps<{
+    isVisible: boolean;
+}>();
 
-@Component
-export default class TopRightTriangle extends Vue {
-	@Prop()
-	public isVisible!: boolean;
-	@Prop()
-	public introDone!: () => void;
-}
 </script>
 
-<style lang="scss" scoped>
-@import "../styles/colors.scss";
-
+<style scoped>
 @media screen and (max-width: 600px) {
-	.trt {
-		display: none;
-	}
+    .trt {
+        display: none;
+    }
 }
-$size: 16rem;
+
 .trt {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: $size;
-	height: $size;
-	background-color: red;
-	background: linear-gradient(45deg, white, $pink);
-	shape-outside: polygon(0 0, 100% 0, 100% 100%);
-	clip-path: polygon(0 0, 100% 0, 100% 100%);
+    --size: 16rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--size);
+    height: var(--size);
+    background-color: red;
+    background: linear-gradient(45deg, white, var(--neon-pink));
+    shape-outside: polygon(0 0, 100% 0, 100% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    overflow: hidden;
 }
 
 .enter {
-	animation: enter $duration $motion;
+    animation: enter var(--duration) var(--motion);
 }
 
 @keyframes enter {
-	0% {
-		transform: translateX(30rem);
-	}
-	100% {
-		transform: translateX(0);
-	}
+    0% {
+        transform: translateX(30rem);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 </style>

@@ -1,122 +1,141 @@
-<template lang="pug">
-.find-me(v-if="isVisible")
-	.find-me__title Find me here:
-	.find-me__links
-		a.find-me__item(
-			v-for="link in links"
-			:href='link.url'
-			:class="{'in-front' : isInFront}"
-			target='_blank' 
-		)
-			img(:src="link.icon")
-			span {{link.name}}
+<template>
+    <div class="find-me" v-if="isVisible">
+        <div class="title">Hola, I'm Michael Man<span class="zano-highlight">zano</span>, let's connect:</div>
+        <div class="links">
+            <a class="link" target="_blank" v-for="link in links" :href="link.url" :class="{ 'in-front': isInFront }">
+                <img v-if="link.icon" :src="link.icon" :alt="link.name" />
+                <span>{{ link.name }}</span>
+            </a>
+        </div>
+    </div>
+
 </template>
 
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { ILink } from '@/models/IModels';
-@Component
-export default class FindMe extends Vue {
-	@Prop()
-	public isVisible: boolean = false;
-	@Prop()
-	public isInFront: boolean = false;
+<script setup lang="ts">
+import { ref } from 'vue';
+import bandcampIcon from '../assets/logos/bandcamp.svg';
+import blueSkyIcon from '../assets/logos/bluesky.svg';
+import codepenIcon from '../assets/logos/codepen.svg';
+import instagramIcon from '../assets/logos/instagram.svg';
+import linkedinIcon from '../assets/logos/linkedin.svg';
+import zan0Icon from '../assets/logos/zan0.svg';
 
-	public links: ILink[] = [
-		{
-			url: 'https://codepen.io/_zan0/',
-			name: 'Code Pen',
-			icon: require('../assets/codepen.png')
-		},
-		{
-			url: 'https://twitter.com/_zan0',
-			name: 'Twitter',
-			icon: require('../assets/twitter.svg')
-		},
-		{
-			url: 'https://www.instagram.com/mikezan0/',
-			name: 'Instagram',
-			icon: require('../assets/instagram.svg')
-		},
-		{
-			url: 'https://zan0.bandcamp.com/',
-			name: 'Bandcamp',
-			icon: require('../assets/bandcamp.png')
-		},
-		{
-			url: 'https://soundcloud.com/djzan0',
-			name: 'Soundcloud',
-			icon: require('../assets/soundcloud.svg')
-		}
-	];
+interface Link {
+    url: string;
+    name: string;
+    icon?: string;
 }
+defineProps<{
+    isVisible: boolean;
+    isInFront: boolean;
+}>();
+
+const links = ref<Link[]>([
+    {
+        url: 'https://www.linkedin.com/in/michael-manzano-16024097/',
+        name: 'Linked In',
+        icon: linkedinIcon
+    }, {
+        url: 'https://zan0.dev/',
+        name: 'zan0.dev',
+        icon: zan0Icon
+    }, {
+        url: 'https://codepen.io/_zan0/',
+        name: 'Code Pen',
+        icon: codepenIcon
+    },
+    {
+        url: 'https://bsky.app/profile/mikezano.bsky.social',
+        name: 'Blue Sky',
+        icon: blueSkyIcon
+    },
+    {
+        url: 'https://www.instagram.com/mikezan0/',
+        name: 'Instagram',
+        icon: instagramIcon
+    },
+    {
+        url: 'https://zan0.bandcamp.com/',
+        name: 'Bandcamp',
+        icon: bandcampIcon
+    },
+    // {
+    //     url: 'https://soundcloud.com/djzan0',
+    //     name: 'Soundcloud',
+    //     icon: soundcloudIcon
+    // }
+]);
+
 </script>
 
-<style lang="scss" scoped>
-@import '../styles/colors';
-
-.in-front {
-	position: relative;
-	z-index: 1;
-}
+<style scoped>
 .find-me {
-	&__title,
-	&__item {
-		text-align: left;
-	}
 
-	&__links {
-		margin-top: 1rem;
-	}
+    & .zano-highlight {
+        color: var(--electric-blue);
+    }
 
-	&__title {
-		font-size: 2rem;
-		color: black;
-	}
+    & .title {
+        color: white;
+        margin-top: 0.4rem;
+        font-size: 0.9rem;
+        letter-spacing: 0.009rem;
+    }
 
-	&__item {
-		color: $pinkL3;
-		display: inline-flex;
-		position: relative;
-		text-decoration: none;
-		margin-bottom: 1rem;
-		margin-left: 2rem;
+    & .links {
+        margin-top: 1rem;
+    }
 
-		img {
-			width: 2rem;
-			height: 2rem;
-		}
-		span {
-			font-size: 1.7rem;
-			height: 2rem;
-			width: auto;
-			margin-left: 0.5rem;
-		}
+    & .link {
+        color: white;
+        display: inline-flex;
+        text-decoration: none;
+        align-items: center;
+        gap: .4rem;
+        font-size: 1.2rem;
+        width: 10rem;
+        margin-left: 3rem;
+    }
 
-		&:hover::before {
-			transition: all 0.2s ease-in-out;
-			border-bottom: 0.3rem solid $pinkL1;
-			width: 100%;
-		}
-	}
-	&__item::before {
-		content: '';
-		position: absolute;
-		padding-bottom: 0.2rem;
-		height: 2rem;
-		width: 0;
-		border-bottom: 0.3rem solid white;
-	}
+    & .link.in-front {
+        position: relative;
+        z-index: 10;
+    }
+
+    & .link:hover {
+        background: none;
+    }
+
+    & .link img {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    & .link::before {
+        content: '';
+        position: absolute;
+        padding-bottom: 2.2rem;
+        height: 2rem;
+        width: 0;
+        border-bottom: 0.3rem solid white;
+    }
+
+    & .link:hover::before {
+        transition: all 0.2s ease-in-out;
+        border-bottom: 0.2rem solid var(--neon-pink);
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 600px) {
-	.find-me__title {
-		display: none;
-	}
-	.find-me {
-		display: flex;
-		flex-direction: column;
-	}
+    .find-me .title {
+        display: none;
+    }
+
+    .find-me {
+        display: flex;
+        flex-direction: column;
+    }
 }
 </style>

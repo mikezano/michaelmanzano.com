@@ -1,58 +1,53 @@
-<template lang="pug">
-transition(
-	leave-active-class='leave'
-	enter-active-class='enter'
-)
-	.trc(v-if='isVisible')
+<template>
+    <transition leave-active-class="leave" enter-active-class="enter">
+        <div class="trc" v-if="isVisible"></div>
+    </transition>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-@Component
-export default class TopRightCurtain extends Vue {
-	@Prop()
-	public isVisible!: boolean;
-}
+<script setup lang="ts">
+defineProps<{
+    isVisible: boolean
+}>();
 </script>
 
-<style lang="scss" scoped>
-@import '../styles/colors.scss';
+<style scoped>
 .trc {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 75%;
-	height: 100%;
-	background-color: green;
-	background: linear-gradient(45deg, $blueL1, $blueD2);
-	//shape-outside: polygon(0 0, 100% 100%, 0 100%);
-	clip-path: polygon(0 0, 100% 0, 100% 100%, 69% 100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 75%;
+    height: 100%;
+    background-color: green;
+    background: linear-gradient(45deg, var(--electric-blue), var(--electric-blue-dark));
+    /* shape-outside: polygon(0 0, 100% 100%, 0 100%); */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 69% 100%);
 }
 
 .leave {
-	animation: leave $duration $motion;
+    animation: leave var(--duration) var(--motion);
 }
 
 @keyframes leave {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(20rem);
-	}
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(20rem);
+    }
 }
 
 .enter {
-	animation: enter 0.5s $motion;
+    animation: enter var(--duration) var(--motion);
 }
 
 @keyframes enter {
-	0% {
-		transform: translateX(20rem);
-	}
-	100% {
-		transform: translateX(0);
-	}
+    0% {
+        transform: translateX(20rem);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 </style>
