@@ -8,6 +8,7 @@ import BottomLeftCurtain from '../components/BottomLeftCurtain.vue'
 import BottomLeftNavigation from '../components/BottomLeftNavigation.vue'
 import BottomLeftTriangle from '../components/BottomLeftTriangle.vue'
 import Logo from '../components/Logo.vue'
+import Me from '../components/Me.vue'
 import TopRightCurtain from '../components/TopRightCurtain.vue'
 import TopRightTriangle from '../components/TopRightTriangle.vue'
 
@@ -84,7 +85,10 @@ const loadNextPage = () => {
         <BottomLeftNavigation :isVisible="isNavigationVisible" :afterEnter="handleNavigationAfterEnter"
             :onClick="setNextPage" />
         <TopRightCurtain :isVisible="areCurtainsVisible" />
-        <TopRightTriangle :isVisible="areTriangesVisible" />
+        <TopRightTriangle :isVisible="areTriangesVisible">
+            <Me :isVisible="isNavigationVisible" />
+        </TopRightTriangle>
+
     </Background>
 
 </template>
@@ -92,7 +96,7 @@ const loadNextPage = () => {
 <style scoped>
 .fake-blt,
 .fake-trt {
-    --size: 20rem;
+    --size: 18rem;
     position: relative;
     width: var(--size);
     height: var(--size);
@@ -109,6 +113,7 @@ const loadNextPage = () => {
 }
 
 .fake-trt {
+
     float: right;
     top: 0;
     right: 0;

@@ -40,7 +40,7 @@
 
 @keyframes move {
     100% {
-        background-position: 0 400px, 50px 350px;
+        background-position: -400px 0px, -350px 50px;
     }
 }
 

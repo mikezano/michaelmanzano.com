@@ -5,7 +5,6 @@
             <p class="bln__find-me" @click="navigate('FindMe')">Find Me</p>
             <p class="bln__etc" @click="navigate('About')">About</p>
         </div>
-
     </transition>
 </template>
 

@@ -1,6 +1,9 @@
 <template>
     <transition enter-active-class="enter">
-        <div class="trt" v-if="isVisible"></div>
+        <div class="trt" v-if="isVisible">
+            <slot />
+        </div>
+
     </transition>
 
 </template>
@@ -30,6 +33,7 @@ defineProps<{
     background: linear-gradient(45deg, white, var(--neon-pink));
     shape-outside: polygon(0 0, 100% 0, 100% 100%);
     clip-path: polygon(0 0, 100% 0, 100% 100%);
+    overflow: hidden;
 }
 
 .enter {

@@ -1,6 +1,6 @@
 <template>
     <div class="find-me" v-if="isVisible">
-        <div class="title">Find me here:</div>
+        <div class="title">Hola, I'm Michael Man<span class="zano-highlight">zano</span>, let's connect:</div>
         <div class="links">
             <a class="link" target="_blank" v-for="link in links" :href="link.url" :class="{ 'in-front': isInFront }">
                 <img v-if="link.icon" :src="link.icon" :alt="link.name" />
@@ -19,7 +19,6 @@ import blueSkyIcon from '../assets/logos/bluesky.svg';
 import codepenIcon from '../assets/logos/codepen.svg';
 import instagramIcon from '../assets/logos/instagram.svg';
 import linkedinIcon from '../assets/logos/linkedin.svg';
-import soundcloudIcon from '../assets/logos/soundcloud.svg';
 import zan0Icon from '../assets/logos/zan0.svg';
 
 interface Link {
@@ -61,11 +60,11 @@ const links = ref<Link[]>([
         name: 'Bandcamp',
         icon: bandcampIcon
     },
-    {
-        url: 'https://soundcloud.com/djzan0',
-        name: 'Soundcloud',
-        icon: soundcloudIcon
-    }
+    // {
+    //     url: 'https://soundcloud.com/djzan0',
+    //     name: 'Soundcloud',
+    //     icon: soundcloudIcon
+    // }
 ]);
 
 </script>
@@ -73,8 +72,18 @@ const links = ref<Link[]>([
 <style scoped>
 .find-me {
 
+    & .zano-highlight {
+        color: var(--electric-blue);
+    }
+
     & .title {
         color: white;
+        margin-top: 0.4rem;
+        font-size: 0.9rem;
+    }
+
+    & .links {
+        margin-top: 1rem;
     }
 
     & .link {
