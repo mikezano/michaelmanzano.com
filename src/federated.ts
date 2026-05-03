@@ -1,3 +1,4 @@
+import './assets/main.css'
 import { createPinia } from 'pinia'
 import { createApp, type App } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
