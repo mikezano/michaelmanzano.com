@@ -2,6 +2,7 @@
     <transition enter-active-class="enter" @after-enter="afterEnter" leave-active-class="leave">
         <div class="bln" v-if="isVisible">
             <div class="bln__triangle"></div>
+            <p class="bln__projects" @click="navigate('Projects')">Projects</p>
             <p class="bln__find-me" @click="navigate('FindMe')">Find Me</p>
             <p class="bln__etc" @click="navigate('About')">About</p>
         </div>
@@ -53,14 +54,19 @@ const navigate = (page: string) => {
     }
 
     & .bln__find-me {
+        margin-bottom: 0rem;
+
+    }
+
+    & .bln__projects {
         margin-top: 7rem;
-        margin-bottom: 1rem;
     }
 
     & .bln__find-me,
+    & .bln__projects,
     & .bln__etc {
         text-align: right;
-        font-size: 1.3rem;
+        font-size: 1rem;
         /* //position: relative;
         //width: auto; */
         transition: all 0.2s ease-in-out;
@@ -69,6 +75,7 @@ const navigate = (page: string) => {
     }
 
     & .bln__find-me:hover,
+    & .bln__projects:hover,
     & .bln__etc:hover {
         color: var(--electric-blue-dark);
         cursor: pointer;
