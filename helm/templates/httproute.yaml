@@ -10,6 +10,25 @@ spec:
   hostnames:
     - {{ .Values.route.host }}
   rules:
+    # Redirect bare /me and /me/ to the shell so direct navigation lands on the full
+    # layout (React shell + navbar) instead of the standalone Vue app.
+    # Exact matches take priority over PathPrefix within the same HTTPRoute.
+    - matches:
+        - path:
+            type: Exact
+            value: {{ .Values.route.path }}
+        - path:
+            type: Exact
+            value: {{ .Values.route.path }}/
+      filters:
+        - type: RequestRedirect
+          requestRedirect:
+            path:
+              type: ReplaceFullPath
+              replaceFullPath: /
+            statusCode: 302
+    # All other /me/* requests (remoteEntry.js, mf-manifest.json, assets) go to
+    # the me service with the /me prefix stripped.
     - matches:
         - path:
             type: PathPrefix
